@@ -1,0 +1,46 @@
+# Settings:
+# de.lmu.ifi.dbs.elki.workflow.InputStep
+# -db StaticArrayDatabase
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -dbc FileBasedDatabaseConnection
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.in C:\Users\Miguel Sandim\Documents\master-thesis\datasets_processed\KDDCup99.csv
+# -dbc.parser NumberVectorLabelParser
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.CSVReaderFormat
+# -parser.colsep \s*[,;\s]\s*
+# -parser.quote "'
+# -string.comment ^\s*(#|//|;).*$
+# 
+# de.lmu.ifi.dbs.elki.datasource.parser.NumberVectorLabelParser
+# -parser.labelIndices [unset]
+# -parser.vector-type DoubleVector
+# 
+# de.lmu.ifi.dbs.elki.datasource.FileBasedDatabaseConnection
+# -dbc.filter [unset]
+# 
+# de.lmu.ifi.dbs.elki.database.StaticArrayDatabase
+# -db.index [unset]
+# 
+# de.lmu.ifi.dbs.elki.workflow.AlgorithmStep
+# -time true
+# -algorithm outlier.clustering.KMeansOutlierDetection
+# 
+# de.lmu.ifi.dbs.elki.algorithm.outlier.clustering.KMeansOutlierDetection
+# -kmeans.algorithm KMeansLloyd
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.kmeans.KMeansLloyd
+# -kmeans.k 7
+# -kmeans.initialization RandomlyChosenInitialMeans
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.kmeans.initialization.RandomlyChosenInitialMeans
+# -kmeans.seed null
+# 
+# de.lmu.ifi.dbs.elki.algorithm.clustering.kmeans.KMeansLloyd
+# -algorithm.distancefunction minkowski.SquaredEuclideanDistanceFunction
+# -kmeans.maxiter 0
+# 
+# de.lmu.ifi.dbs.elki.workflow.EvaluationStep
+# -evaluator NoAutomaticEvaluation

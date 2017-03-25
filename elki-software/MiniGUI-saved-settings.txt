@@ -1,0 +1,21 @@
+#Saved ELKI settings. First line is title, remaining lines are parameters.
+
+de.lmu.ifi.dbs.elki.application.KDDCLIApplication
+-verbose
+-verbose
+-dbc.in
+C:\Users\Miguel Sandim\Documents\master-thesis\datasets_processed\KDDCup99.arff
+-arff.externalid
+id
+-time
+-algorithm
+outlier.lof.parallel.ParallelLOF
+-lof.k
+20
+-evaluator
+NoAutomaticEvaluation
+-resulthandler
+ResultWriter
+-out
+C:\Users\Miguel Sandim\Documents\master-thesis\results
+

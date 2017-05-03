@@ -21,8 +21,10 @@ divideDataset <- function(dataset)
 
 aggregatePredictions <- function(algorithmResults)
 {
-  bind_rows(lapply(algorithmResults, function(x) x$trainFinal))
-  bind_rows(lapply(algorithmResults, function(x) x$testFinal))
+  trainFinal <- bind_rows(lapply(algorithmResults, function(x) x$trainFinal))
+  testFinal <- bind_rows(lapply(algorithmResults, function(x) x$testFinal))
+  
+  list(trainFinal = trainFinal, testFinal = testFinal)
 }
 
 evaluateDatasets <- function(supervisedAlgs, semiSupervisedAlgs, unsupervisedAlgs, datasets)
@@ -32,32 +34,32 @@ evaluateDatasets <- function(supervisedAlgs, semiSupervisedAlgs, unsupervisedAlg
     # Divide dataset according to the proportions defined:
     datasetSplit <- divideDataset(dataset)
     
-    resultsSupervised <- lapply(supervisedAlgs, evaluateDatasetSupervised, datasetSplit)
+    #resultsSupervised <- lapply(supervisedAlgs, evaluateDatasetSupervised, datasetSplit)
     resultsSemi <- lapply(semiSupervisedAlgs, evaluateDatasetSemi, datasetSplit)
     resultsUnsupervised <- lapply(unsupervisedAlgs, evaluateDatasetUnsupervised, datasetSplit)
     
-    aggregatePredictions(resultsSupervised)
+    #aggregatePredictions(resultsSupervised)
     aggregatePredictions(resultsSemi)
     aggregatePredictions(resultsUnsupervised)
     
     # Combine results:
-    resultsAlgorithmsTrain <- bind_cols(resultsSupervised$trainFinal %>% select(-truth), 
+    resultsAlgorithmsTrain <- bind_cols(#resultsSupervised$trainFinal %>% select(-truth), 
                                         resultsSemi$trainFinal %>% select(-truth),
                                         resultsUnsupervised$trainFinal %>% select(-truth))
     
-    resultsAlgorithmsTest <- bind_cols(resultsSupervised$testFinal %>% select(-truth), 
+    resultsAlgorithmsTest <- bind_cols(#resultsSupervised$testFinal %>% select(-truth), 
                                        resultsSemi$testFinal %>% select(-truth),
                                        resultsUnsupervised$testFinal %>% select(-truth))
     
     # Add ground truth again:
-    resultsAlgorithmsTrain$truth <- resultsSupervised$trainFinal$truth
-    resultsAlgorithmsTest$truth <- resultsSupervised$testFinal$truth
+    #resultsAlgorithmsTrain$truth <- dataset$trainAlgorithms
+    #resultsAlgorithmsTest$truth <- resultsSupervised$testFinal$truth
     
     # Evaluate algorithms individually:
-    evaluateDataset
+    evaluateDataset(resultsAlgorithmsTrain)
     
     # Evaluate the ensemble of algorithms:
-    evaluateDatasetEnsembleRF(resultsAlgorithms)
+    evaluateDatasetEnsembleRF(resultsAlgorithmsTrain, resultsAlgorithmsTest)
   })
 }
 
@@ -74,7 +76,7 @@ evaluateDatasetSupervised <- function(algorithmName, dataset)
 evaluateDatasetSemi <- function(algorithm, dataset)
 {
   # ver isto melhor ########## falta meter o name e assim
-  model <- algorithm$train(truth ~ ., data = dataset$trainAlgorithms %>% filter(truth == TRUE), method = algorithmName)
+  model <- algorithm$train(truth ~ ., data = dataset$trainAlgorithms %>% filter(truth == TRUE))
   dataset$trainFinal[[paste0("alg_", algorithmName)]] <- predict(model, dataset$trainFinal)
   dataset$testFinal[[paste0("alg_", algorithmName)]] <- predict(model, dataset$testFinal)
   

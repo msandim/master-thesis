@@ -65,23 +65,29 @@ calculate_second_derivative <- function(x)
   sapply(seq(1, length(x)), function(i)
   {
     if (i == 1 || i == length(x))
-      return(0)
+      return(NA)
     else
       return(x[i+1] + x[i-1] - 2 * x[i])
   })
 }
 
 # test with derivative
-y <- kNNdist(dataset_hepatitis %>% select(-outlier) %>% as.matrix, k = 4) %>% sort
-kNNdistplot(dataset_hepatitis %>% select(-outlier) %>% as.matrix, k = 4)
-elbow <- calculate_second_derivative(y) # 317
-y[317]
-dataset_hepatitis_copy <- dataset_hepatitis
-dataset_hepatitis_copy$cluster <- dbscan(dataset_hepatitis_copy %>% select(-outlier) %>% as.matrix, eps = y[317], minPts = ncol(dataset_hepatitis_copy))$cluster
-table(dataset_hepatitis_copy$cluster)
-dataset_hepatitis_copy %>% filter(cluster == 0) %>% .$outlier %>% table
+test_derivative <- function(dataset)
+{
+  library(dbscan)
+  y <- kNNdist(dataset %>% select(-outlier) %>% as.matrix, k = 4) %>% sort
+  kNNdistplot(dataset %>% select(-outlier) %>% as.matrix, k = 4)
+  derivative <- calculate_second_derivative(y)
+  elbow_point <- which.max(derivative) # 317
+  eps_value <- y[elbow_point]
+  abline(v = elbow_point)
+  dataset_copy <- dataset
+  dataset_copy$cluster <- dbscan(dataset_copy %>% select(-outlier) %>% as.matrix, eps = eps_value, minPts = ncol(dataset_copy))$cluster
+  table(dataset_copy$cluster)
+  dataset_copy %>% filter(cluster == 0) %>% .$outlier %>% table
+}
 
-# test with code from stack overflow
+# test with code from stack overflow (não funciona no ads)
 y <- kNNdist(dataset_hepatitis %>% select(-outlier) %>% as.matrix, k = 4) %>% sort
 kNNdistplot(dataset_hepatitis %>% select(-outlier) %>% as.matrix, k = 4)
 elbow <- calculate_second_derivative(y)

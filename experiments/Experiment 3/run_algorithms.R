@@ -41,7 +41,7 @@ algorithms <- c(
   #"randomForest"
 )
 
-buildCommand <- function(dataset, algorithm, fold)
+buildCommand <- function(algorithm, dataset, fold)
 {
   jobName <- paste0(dataset, "_", algorithm, "_", fold)
   paste0("qsub -v dataset=\'",
@@ -63,7 +63,7 @@ for(dataset in datasets)
     if (algorithm %in% c("DBSCAN", "kNNDistance", "LOF"))
     {
       fold <- 0
-      command <- buildCommand(dataset, algorithm, fold)
+      command <- buildCommand(algorithm, dataset, fold)
       print(command)
       system(command)
     }
@@ -71,7 +71,7 @@ for(dataset in datasets)
     {
       for(fold in 1:10)
       {
-        command <- buildCommand(dataset, algorithm, fold)
+        command <- buildCommand(algorithm, dataset, fold)
         print(command)
         system(command)
       }

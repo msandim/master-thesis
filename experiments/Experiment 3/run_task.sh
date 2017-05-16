@@ -1,5 +1,3 @@
 #!/bin/bash
 
-echo $dataset
-echo $algorithm
-echo $fold
+Rscript task_handler.R $algorithm $dataset $fold

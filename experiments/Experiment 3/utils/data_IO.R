@@ -2,7 +2,7 @@ set.seed(20)
 
 loadDataset <- function(dataset)
 {
-  fileName <- paste0("experiments/Experiment 3/datasets_processed/",
+  fileName <- paste0("datasets_processed/",
                      dname,
                      ".csv")
   
@@ -11,7 +11,7 @@ loadDataset <- function(dataset)
 
 loadDatasetTrain <- function(dataset, fold)
 {
-  fileName <- paste0("experiments/Experiment 3/datasets_processed/",
+  fileName <- paste0("datasets_processed/",
                      dname,
                      "_",
                      sprintf("%02d", fold),
@@ -22,7 +22,7 @@ loadDatasetTrain <- function(dataset, fold)
 
 loadDatasetTest <- function(dataset, fold)
 {
-  fileName <- paste0("experiments/Experiment 3/datasets_processed/",
+  fileName <- paste0("datasets_processed/",
                      dname,
                      "_",
                      sprintf("%02d", fold),
@@ -31,4 +31,15 @@ loadDatasetTest <- function(dataset, fold)
   return(read.csv(fileName))
 }
 
-
+writePredictions <- function(data, algorithm, dataset, fold)
+{
+  fileName <- paste0("datasets_processed/",
+                     dataset,
+                     "_",
+                     sprintf("%02d", fold),
+                     "_",
+                     algorithm,
+                     ".csv")
+  
+  write.csv(data, fileName, row.names = FALSE)
+}

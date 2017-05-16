@@ -43,12 +43,14 @@ algorithms <- c(
 
 buildCommand <- function(dataset, algorithm, fold)
 {
+  jobName <- paste0(dataset, "_", algorithm, "_", fold)
   paste0("qsub -v dataset=\'",
                     dataset,
                     "\',algorithm=\'",
                     algorithm,
                     "\',fold=",
                     fold,
+                    " -N ", jobName,
                     " run_task.sh")
 }
 

@@ -1,20 +1,31 @@
-set.seed(20)
-
 library(e1071)
-library(dplyr)
 
 one_class_svm_train <- function(data)
 {
-  data_model <- data %>% select(-outlier)
-  model <- svm(data_model, type='one-classification', scale = FALSE)
+  data_X <- data %>% select(-outlier)
   
-  return(model)
+  # Scale the data:
+  scaleObject <- preProcess(data_X, method = c("center", "scale"))
+  data_X <- predict(scaleObject, data_X)
+  
+  model <- svm(data_X, type='one-classification', scale = FALSE)
+  
+  return(list(model = model, scaleObject = scaleObject))
 }
 
 one_class_svm_test <- function(model, data)
 {
-  data$oneClassSVM <- !predict(svm_model, data %>% select(-outlier))
-  return(data)
+  data_X <- data %>% select(-outlier)
+  returnData <- data %>% select(outlier)
+  
+  # Scale the data:
+  data_X <- predict(model[["scaleObject"]], data_X)
+  
+  predictions <- predict(model[["model"]], data_X)
+  
+  returnData$oneClassSVM <- ifelse(predictions, "no", "yes")
+  
+  return(returnData)
 }
 
 #one_class_svm_save <- function(data, algorithm, dataset, fold)

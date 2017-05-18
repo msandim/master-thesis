@@ -1,19 +1,21 @@
-set.seed(20)
-
 library(dbscan)
-library(dplyr)
 
 dbscan_apply <- function(data)
 {
-  data_matrix <- data %>% select(-outlier) %>% as.matrix
+  data_X <- data %>% select(-outlier)
+  returnData <- data %>% select(outlier)
   
-  data$dbscan_03 <- (dbscan(data_matrix, eps = 0.3, minPts = ncol(data) + 1)$cluster == 0)
-  data$dbscan_05 <- (dbscan(data_matrix, eps = 0.5, minPts = ncol(data) + 1)$cluster == 0)
-  data$dbscan_07 <- (dbscan(data_matrix, eps = 0.7, minPts = ncol(data) + 1)$cluster == 0)
-  data$dbscan_09 <- (dbscan(data_matrix, eps = 0.9, minPts = ncol(data) + 1)$cluster == 0)
-  data$dbscan_11 <- (dbscan(data_matrix, eps = 1.1, minPts = ncol(data) + 1)$cluster == 0)
+  # Scale the data:
+  scaleObject <- preProcess(data_X, method = c("center", "scale"))
+  data_X <- predict(scaleObject, data_X) %>% as.matrix
   
-  return(data)
+  returnData$dbscan_0.3 <- (dbscan(data_X, eps = 0.3, minPts = ncol(data) + 1)$cluster == 0)
+  returnData$dbscan_0.5 <- (dbscan(data_X, eps = 0.5, minPts = ncol(data) + 1)$cluster == 0)
+  returnData$dbscan_0.7 <- (dbscan(data_X, eps = 0.7, minPts = ncol(data) + 1)$cluster == 0)
+  returnData$dbscan_0.9 <- (dbscan(data_X, eps = 0.9, minPts = ncol(data) + 1)$cluster == 0)
+  returnData$dbscan_1.1 <- (dbscan(data_X, eps = 1.1, minPts = ncol(data) + 1)$cluster == 0)
+  
+  return(returnData)
 }
 
 #dbscan_save <- function(data, algorithm, dataset, fold)

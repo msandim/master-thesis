@@ -25,21 +25,24 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
-datasets <- tail(datasets, 3)
+#datasets <- tail(datasets, 1)
 
 algorithms <- c(
-  "CART",
-  #"DBSCAN",
+  #"CART",
+  "DBSCAN",
   #"kmeans",
   #"kNN",
   #"kNNDistance",
   #"linearSVM",
-  "LOF"
+  "LOF",
+  "random",
   #"naiveBayes",
   #"neuralNetwork",
-  #"oneClassSVM",
-  #"randomForest"
+  "oneClassSVM",
+  "randomForest"
 )
+
+unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF", "random")
 
 buildCommand <- function(algorithm, dataset, fold)
 {
@@ -51,16 +54,24 @@ buildCommand <- function(algorithm, dataset, fold)
                     "\',fold=",
                     fold,
                     " -N ", jobName,
+                    " -o outputs/", jobName, "_o.txt",
+                    " -e errors/", jobName, "_e.txt",
                     " run_task.sh")
 }
 
+#################### Script starts here #####################
+
+# Delete all previous results
+unlink("results_algorithms/*")
+unlink("outputs/*")
+unlink("errors/*")
 
 for(dataset in datasets)
 {
   for(algorithm in algorithms)
   {
     # If the algorithm is unsupervised:
-    if (algorithm %in% c("DBSCAN", "kNNDistance", "LOF"))
+    if (algorithm %in% unsupervisedAlgorithms)
     {
       fold <- 0
       command <- buildCommand(algorithm, dataset, fold)

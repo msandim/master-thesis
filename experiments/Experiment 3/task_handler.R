@@ -17,8 +17,9 @@ source("algorithms/naiveBayes.R")
 source("algorithms/neuralNetwork.R")
 source("algorithms/oneClassSVM.R")
 source("algorithms/randomForest.R")
+source("algorithms/random.R")
 
-unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF")
+unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF", "random")
 semiSupervisedAlgorithms <- c("oneClassSVM")
 
 train_functions <- list(
@@ -45,7 +46,8 @@ apply_functions <- list(
   DBSCAN = dbscan_apply,
   #kmeans = kmeans_apply,
   #kNNDistance = kNNDistance_apply,
-  LOF = lof_apply
+  LOF = lof_apply,
+  random = random_apply
 )
 
 #save_functions <- list(
@@ -70,7 +72,11 @@ if (length(args) != 3)
 
 algorithm <- args[1]
 dataset <- args[2]
-fold <- args[3]
+fold <- as.numeric(args[3])
+
+print(algorithm)
+print(dataset)
+print(fold)
 
 # Unsupervised
 if (algorithm %in% unsupervisedAlgorithms)
@@ -83,8 +89,10 @@ if (algorithm %in% unsupervisedAlgorithms)
   
 } else if (algorithm %in% semiSupervisedAlgorithms) # Semi-supervised
 {
+  print("semi-supervised")
+  
   # Load dataset (only inliers)
-  train_data <- loadDatasetTrain(dataset, fold) %>% filter(outlier = "no")
+  train_data <- loadDatasetTrain(dataset, fold) %>% filter(outlier == "no")
   test_data <- loadDatasetTest(dataset, fold)
   
   # Give dataset to algorithm

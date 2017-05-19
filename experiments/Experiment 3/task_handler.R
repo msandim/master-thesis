@@ -85,33 +85,27 @@ if (algorithm %in% unsupervisedAlgorithms)
   data <- loadDataset(dataset)
   
   # Save the predictions by the algorithm
-  final_data <- apply_functions[[algorithm]](data)
+  final_data <- apply_functions[[algorithm]](data %>% select(-id))
+  final_data <- final_data %>% bind_cols(select(data, id)) %>% select(id, everything())
   
-} else if (algorithm %in% semiSupervisedAlgorithms) # Semi-supervised
-{
-  print("semi-supervised")
-  
-  # Load dataset (only inliers)
-  train_data <- loadDatasetTrain(dataset, fold) %>% filter(outlier == "no")
-  test_data <- loadDatasetTest(dataset, fold)
-  
-  # Give dataset to algorithm
-  model <- train_functions[[algorithm]](train_data)
-  
-  # Save the final predictions
-  final_data <- test_functions[[algorithm]](model, test_data)
-  
-} else # Supervised Learning Algorithms
+} else # Supervised and semi-supervised
 {
   # Load dataset
   train_data <- loadDatasetTrain(dataset, fold)
   test_data <- loadDatasetTest(dataset, fold)
   
+  if (algorithm %in% semiSupervisedAlgorithms)
+  {
+    print("semi-supervised")
+    train_data <- train_data %>% filter(outlier == "no")
+  }
+  
   # Give dataset to algorithm
-  model <- train_functions[[algorithm]](train_data)
+  model <- train_functions[[algorithm]](train_data %>% select(-id))
   
   # Save the final predictions
-  final_data <- test_functions[[algorithm]](model, test_data)
+  final_data <- test_functions[[algorithm]](model, test_data %>% select(-id))
+  final_data <- final_data %>% bind_cols(select(test_data, id)) %>% select(id, everything())
 }
 
 writePredictions(final_data,

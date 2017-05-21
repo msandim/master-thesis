@@ -1,6 +1,7 @@
 set.seed(20)
 
 library(dplyr)
+library(caret)
 
 datasets <- c(
   "dataset_aloi",
@@ -60,9 +61,11 @@ for(dname in datasets)
                          algname,
                          "_00.csv")
       
-      cena <- read.csv(fileName, stringsAsFactors = FALSE) %>% select(-outlier)
-      class(cena)
-      dataset_original <- bind_cols(dataset_original, cena)
+      dataset_original <- bind_cols(dataset_original,
+                                    read.csv(fileName, stringsAsFactors = FALSE) %>%
+                                      select(-outlier))
+      
+      
     }
     else
     {

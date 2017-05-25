@@ -28,85 +28,24 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
-algorithms <- c(
-  #"CART",
-  "DBSCAN",
-  #"kmeans",
-  #"kNN",
-  #"kNNDistance",
-  #"linearSVM",
-  "LOF",
-  #"naiveBayes",
-  #"neuralNetwork",
-  "oneClassSVM",
-  "randomForest"
-)
+nFolds <- 10
 
-unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF", "random")
-
-results_dataset <- data.frame(dataset = character(),
-                              algorithm = character(),
-                              variant = character(),
-                              f1 = numeric(),
-                              precision = numeric(),
-                              recall = numeric())
-
+datasets <- head(datasets)
 for(dname in datasets)
 {
-  dataset_original <- read.csv(paste0("datasets_processed/", dname, ".csv"))
+  dataset <- read.csv(paste0("results_algorithms_joined/", dname, ".csv"))
+  dataset$outlier <- factor(dataset$outlier, levels = c("yes", "no"))
   
-  for(algname in algorithms)
-  {
-    algorithm_variants <- c()
-    
-    if (algname %in% unsupervisedAlgorithms)
-    {
-      fileName <- paste0("results_algorithms/",
-                         dname,
-                         "_",
-                         algname,
-                         "_00.csv")
-      
-      dataset_unsupervised <- read.csv(fileName, stringsAsFactors = FALSE) %>% select(-outlier, -id)
-      dataset_original <- bind_cols(dataset_original, dataset_unsupervised)
-      
-      algorithm_variants <- names(dataset_unsupervised)
-      
-      for(variant in algorithm_variants)
-      {
-        # If the algorithm is LOF, we will mark the k higher scores as anomalous:
-        if (algname == "LOF")
-        {
-          outlierRatio <- prop.table(table(dataset_original$outlier))["yes"]
-          dataset_original[[variant]] <- ifelse(dataset_original[[variant]] > quantile(dataset_original[[variant]], prob = 1 - outlierRatio),
-                                                "yes",
-                                                "no")
-        } else if (algname == "DBSCAN")
-          dataset_original[[variant]] <- ifelse(dataset_original[[variant]], "yes", "no")
-      }
-    }
-    else
-    {
-      algorithm_folds <- list()
-      
-      for(fold in 1:10)
-      {
-        fileName <- paste0("results_algorithms/",
-                           dname,
-                           "_",
-                           algname,
-                           "_",
-                           sprintf("%02d", fold),
-                           ".csv")
-        
-        algorithm_folds <- c(algorithm_folds, list(read.csv(fileName, stringsAsFactors = FALSE) %>% select(-outlier)))
-      }
-      
-      algorithm_folds <- bind_rows(algorithm_folds) %>% arrange(id) %>% select(-id)
-      dataset_original <- bind_cols(dataset_original, algorithm_folds)
-      algorithm_variants <- names(algorithm_folds)
-    }
-  }
+  # Let's test 4 approaches: voting, voting with features, stacking, stacking with features
+  
+  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
+  
+  tc <- trainControl(index = cvIndex, method = 'cv',number = nFolds)
+  
+  train(outlier ~ .,
+        data = dataset,
+        method = "glm",
+        trControl = fitControl)
 }
 
 # Save the dataset:

@@ -102,42 +102,45 @@ for(dname in datasets)
     }
     else
     {
-      algorithm_folds <- list()
-      
-      for(fold in 1:10)
-      {
-        fileName <- paste0("results_algorithms/",
-                           dname,
-                           "_",
-                           algname,
-                           "_",
-                           sprintf("%02d", fold),
-                           ".csv")
+      algorithm_variants <- read.csv(paste0("results_algorithms/", dname, "_", algname, "_01.csv"), stringsAsFactors = FALSE) %>%
+        select(-outlier, -id) %>%
+        names
         
-        algorithm_folds <- c(algorithm_folds, list(read.csv(fileName, stringsAsFactors = FALSE) %>% select(-outlier)))
-      }
-      
-      algorithm_folds <- bind_rows(algorithm_folds) %>% arrange(id) %>% select(-id)
-      dataset_original <- bind_cols(dataset_original, algorithm_folds)
-      algorithm_variants <- names(algorithm_folds)
-      
       for(variant in algorithm_variants)
       {
-        # Compute performance metric:
-        confusion <- caret::confusionMatrix(dataset_original[[variant]] %>% factor(levels = c("yes", "no")),
-                                            dataset_original$outlier %>% factor(levels = c("yes", "no")),
-                                            mode = "prec_recall")
+        f1s <- numeric()
+        precisions <- numeric()
+        recalls <- numeric()
         
-        # Add entry to dataset of results:
+        for(fold in 1:10)
+        {
+          fileName <- paste0("results_algorithms/",
+                             dname,
+                             "_",
+                             algname,
+                             "_",
+                             sprintf("%02d", fold),
+                             ".csv")
+          
+          algorithm_fold <- read.csv(fileName, stringsAsFactors = FALSE)
+          
+          confusion <- caret::confusionMatrix(algorithm_fold[[variant]] %>% factor(levels = c("yes", "no")),
+                                              algorithm_fold$outlier %>% factor(levels = c("yes", "no")),
+                                              mode = "prec_recall")
+          
+          f1s <- c(f1s, confusion$byClass[["F1"]])
+          precisions <- c(precisions, confusion$byClass[["Precision"]])
+          recalls <- c(recalls, confusion$byClass[["Recall"]])
+        }
+        
         results_dataset <- rbind(results_dataset, data.frame(
           dataset = dname,
           algorithm = algname,
           variant = variant,
-          f1 = confusion$byClass[["F1"]],
-          precision = confusion$byClass[["Precision"]],
-          recall = confusion$byClass[["Recall"]]))
+          f1 = mean(f1s, na.rm = TRUE),
+          precision = mean(precisions, na.rm = TRUE),
+          recall = mean(recalls, na.rm = TRUE)))
       }
-      
     }
   }
 }

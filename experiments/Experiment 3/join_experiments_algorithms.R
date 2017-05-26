@@ -60,8 +60,7 @@ for(dname in datasets)
                          algname,
                          "_00.csv")
       
-      cena <- read.csv(fileName, stringsAsFactors = FALSE) %>% select(-outlier)
-      class(cena)
+      cena <- read.csv(fileName, stringsAsFactors = FALSE) %>% select(-outlier, -id)
       dataset_original <- bind_cols(dataset_original, cena)
     }
     else

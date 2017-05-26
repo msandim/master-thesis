@@ -82,8 +82,7 @@ for(dname in datasets)
           dataset_original[[variant]] <- ifelse(dataset_original[[variant]] > quantile(dataset_original[[variant]], prob = 1 - outlierRatio),
                                                 "yes",
                                                 "no")
-        } else if (algname == "DBSCAN")
-          dataset_original[[variant]] <- ifelse(dataset_original[[variant]], "yes", "no")
+        }
         
         # Compute performance metric:
         confusion <- caret::confusionMatrix(dataset_original[[variant]] %>% factor(levels = c("yes", "no")),
@@ -132,6 +131,11 @@ for(dname in datasets)
           precisions <- c(precisions, confusion$byClass[["Precision"]])
           recalls <- c(recalls, confusion$byClass[["Recall"]])
         }
+        
+        # All the NAs will be replaced by zero:
+        f1s[is.na(f1s)] <- 0
+        precisions[is.na(precisions)] <- 0
+        recalls[is.na(recalls)] <- 0
         
         results_dataset <- rbind(results_dataset, data.frame(
           dataset = dname,

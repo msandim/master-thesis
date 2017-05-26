@@ -9,11 +9,11 @@ dbscan_apply <- function(data)
   scaleObject <- preProcess(data_X, method = c("center", "scale"))
   data_X <- predict(scaleObject, data_X) %>% as.matrix
   
-  returnData$dbscan_0.3 <- (dbscan(data_X, eps = 0.3, minPts = ncol(data) + 1)$cluster == 0)
-  returnData$dbscan_0.5 <- (dbscan(data_X, eps = 0.5, minPts = ncol(data) + 1)$cluster == 0)
-  returnData$dbscan_0.7 <- (dbscan(data_X, eps = 0.7, minPts = ncol(data) + 1)$cluster == 0)
-  returnData$dbscan_0.9 <- (dbscan(data_X, eps = 0.9, minPts = ncol(data) + 1)$cluster == 0)
-  returnData$dbscan_1.1 <- (dbscan(data_X, eps = 1.1, minPts = ncol(data) + 1)$cluster == 0)
+  returnData$dbscan_0.3 <- ifelse((dbscan(data_X, eps = 0.3, minPts = ncol(data) + 1)$cluster == 0), "yes", "no")
+  returnData$dbscan_0.5 <- ifelse((dbscan(data_X, eps = 0.5, minPts = ncol(data) + 1)$cluster == 0), "yes", "no")
+  returnData$dbscan_0.7 <- ifelse((dbscan(data_X, eps = 0.7, minPts = ncol(data) + 1)$cluster == 0), "yes", "no")
+  returnData$dbscan_0.9 <- ifelse((dbscan(data_X, eps = 0.9, minPts = ncol(data) + 1)$cluster == 0), "yes", "no")
+  returnData$dbscan_1.1 <- ifelse((dbscan(data_X, eps = 1.1, minPts = ncol(data) + 1)$cluster == 0), "yes", "no")
   
   return(returnData)
 }

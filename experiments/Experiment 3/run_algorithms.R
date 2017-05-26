@@ -35,11 +35,11 @@ algorithms <- c(
   #"kNNDistance",
   #"linearSVM",
   "LOF",
-  "random",
-  "naiveBayes",
+  #"naiveBayes",
   #"neuralNetwork",
   "oneClassSVM",
-  "randomForest"
+  "randomForest",
+  "random"
 )
 
 unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF", "random")

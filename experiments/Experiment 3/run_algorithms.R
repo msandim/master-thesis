@@ -37,6 +37,7 @@ algorithms <- c(
   "LOF",
   #"naiveBayes",
   #"neuralNetwork",
+  "naiveBayes",
   "oneClassSVM",
   "randomForest",
   "random"

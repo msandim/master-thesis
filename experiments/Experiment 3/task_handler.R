@@ -26,7 +26,7 @@ train_functions <- list(
   #CART = cart_train,
   #kNN = knn_train,
   #linearSVM = linear_svm_train,
-  #naiveBayes = naive_bayes_train,
+  naiveBayes = naive_bayes_train,
   #neuralNetwork = neural_network_train,
   oneClassSVM = one_class_svm_train,
   randomForest = random_forest_train
@@ -36,7 +36,7 @@ test_functions <- list(
   #CART = cart_test,
   #kNN = knn_test,
   #linearSVM = linear_svm_test,
-  #naiveBayes = naive_bayes_test,
+  naiveBayes = naive_bayes_test,
   #neuralNetwork = neural_network_test,
   oneClassSVM = one_class_svm_test,
   randomForest = random_forest_test

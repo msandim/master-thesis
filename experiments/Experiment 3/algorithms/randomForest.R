@@ -23,7 +23,7 @@ random_forest_test <- function(model, data)
   # Scale the data:
   data_model <- predict(model[["scaleObject"]], data_model)
   
-  returnData$rf <- predict(model[["model"]], data_model)
+  returnData$rf <- predict(model[["model"]], data_model, type = "prob")[, "yes"]
   
   return(returnData)
 }

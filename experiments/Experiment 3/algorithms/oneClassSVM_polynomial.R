@@ -1,6 +1,6 @@
 library(e1071)
 
-one_class_svm_train <- function(data)
+one_class_svm_polynomial_train <- function(data)
 {
   data_X <- data %>% select(-outlier)
   
@@ -8,12 +8,12 @@ one_class_svm_train <- function(data)
   scaleObject <- preProcess(data_X, method = c("center", "scale"))
   data_X <- predict(scaleObject, data_X)
   
-  model <- svm(data_X, type='one-classification', scale = FALSE)
+  model <- svm(data_X, kernel = "polynomial", type='one-classification', scale = FALSE)
   
   return(list(model = model, scaleObject = scaleObject))
 }
 
-one_class_svm_test <- function(model, data)
+one_class_svm_polynomial_test <- function(model, data)
 {
   data_X <- data %>% select(-outlier)
   returnData <- data %>% select(outlier)
@@ -23,7 +23,7 @@ one_class_svm_test <- function(model, data)
   
   predictions <- predict(model[["model"]], data_X)
   
-  returnData$oneClassSVM <- ifelse(predictions, "no", "yes")
+  returnData$oneClassSVM_polynomial <- ifelse(predictions, "no", "yes")
   
   return(returnData)
 }

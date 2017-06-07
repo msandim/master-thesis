@@ -1,6 +1,6 @@
-library(RSNNS)
+library(e1071)
 
-neural_net_train <- function(data)
+svm_sigmoid_train <- function(data)
 {
   data_model <- data %>% select(-outlier)
   
@@ -10,12 +10,12 @@ neural_net_train <- function(data)
   
   data_model$outlier <- data$outlier
   
-  model <- train(outlier ~ ., data = data_model, method = "mlp", trControl = trainControl(method = "none"))
+  model <- svm(outlier ~ ., data = data_model, kernel = "sigmoid", probability = TRUE, scale = FALSE)
   
   return(list(model = model, scaleObject = scaleObject))
 }
 
-neural_net_test <- function(model, data)
+svm_sigmoid_test <- function(model, data)
 {
   data_model <- data %>% select(-outlier)
   returnData <- data %>% select(outlier)
@@ -23,7 +23,5 @@ neural_net_test <- function(model, data)
   # Scale the data:
   data_model <- predict(model[["scaleObject"]], data_model)
   
-  returnData$mlp <- predict(model[["model"]], data_model, type = "prob")[, "yes"]
-  
-  return(returnData)
+  returnData$SVM_sigmoid <- predict(model[["model"]], data_model, probability = TRUE)[, "yes"]
 }

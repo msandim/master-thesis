@@ -9,43 +9,59 @@ source("utils/data_IO.R")
 source("algorithms/CART.R")
 source("algorithms/DBSCAN.R")
 source("algorithms/kmeans.R")
-source("algorithms/kNN.R")
-source("algorithms/kNNDistance.R")
-source("algorithms/linearSVM.R")
 source("algorithms/LOF.R")
 source("algorithms/naiveBayes.R")
 source("algorithms/neuralNetwork.R")
-source("algorithms/oneClassSVM.R")
+source("algorithms/oneClassSVM_linear.R")
+source("algorithms/oneClassSVM_polynomial.R")
+source("algorithms/oneClassSVM_radial.R")
+source("algorithms/oneClassSVM_sigmoid.R")
 source("algorithms/randomForest.R")
 source("algorithms/random.R")
+source("algorithms/SVM_linear.R")
+source("algorithms/SVM_polynomial.R")
+source("algorithms/SVM_radial.R")
+source("algorithms/SVM_sigmoid.R")
 
-unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF", "random")
-semiSupervisedAlgorithms <- c("oneClassSVM")
+unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "LOF", "random")
+semiSupervisedAlgorithms <- c("oneClassSVM_linear",
+                              "oneClassSVM_polynomial",
+                              "oneClassSVM_radial",
+                              "oneClassSVM_sigmoid")
 
 train_functions <- list(
-  #CART = cart_train,
-  #kNN = knn_train,
-  #linearSVM = linear_svm_train,
+  CART = cart_train,
   naiveBayes = naive_bayes_train,
-  #neuralNetwork = neural_network_train,
-  oneClassSVM = one_class_svm_train,
-  randomForest = random_forest_train
+  neuralNetwork = neural_net_train,
+  oneClassSVM_linear = one_class_svm_linear_train,
+  oneClassSVM_polynomial = one_class_svm_polynomial_train,
+  oneClassSVM_radial = one_class_svm_radial_train,
+  oneClassSVM_sigmoid = one_class_svm_sigmoid_train,
+  randomForest = random_forest_train,
+  SVM_linear = svm_linear_train,
+  SVM_polynomial = svm_polynomial_train,
+  SVM_radial = svm_radial_train,
+  SVM_sigmoid = svm_sigmoid_train
 )
 
 test_functions <- list(
-  #CART = cart_test,
-  #kNN = knn_test,
-  #linearSVM = linear_svm_test,
+  CART = cart_test,
   naiveBayes = naive_bayes_test,
-  #neuralNetwork = neural_network_test,
-  oneClassSVM = one_class_svm_test,
-  randomForest = random_forest_test
+  neuralNetwork = neural_net_test,
+  oneClassSVM_linear = one_class_svm_linear_test,
+  oneClassSVM_polynomial = one_class_svm_polynomial_test,
+  oneClassSVM_radial = one_class_svm_radial_test,
+  oneClassSVM_sigmoid = one_class_svm_sigmoid_test,
+  randomForest = random_forest_test,
+  SVM_linear = svm_linear_test,
+  SVM_polynomial = svm_polynomial_test,
+  SVM_radial = svm_radial_test,
+  SVM_sigmoid = svm_sigmoid_test
 )
 
 apply_functions <- list(
   DBSCAN = dbscan_apply,
-  #kmeans = kmeans_apply,
-  #kNNDistance = kNNDistance_apply,
+  kmeans = kmeans_apply,
   LOF = lof_apply,
   random = random_apply
 )

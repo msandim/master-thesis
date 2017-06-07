@@ -33,8 +33,19 @@ nFolds <- 10
 
 f1_precall <- function(data, lev = NULL, model = NULL) {
   f1 <- F1_Score(y_pred = data$pred, y_true = data$obs, positive = lev[1])
+  
+  if (is.na(f1))
+    f1 <- 0.0
+  
   precision <- Precision(y_pred = data$pred, y_true = data$obs, positive = lev[1])
+  
+  if (is.na(precision))
+    precision <- 0.0
+  
   recall <- Recall(y_pred = data$pred, y_true = data$obs, positive = lev[1])
+  
+  if (is.na(recall))
+    recall <- 0.0
   
   return(c(f1 = f1, precision = precision, recall = recall))
 }
@@ -57,7 +68,7 @@ ensemble_results <- data.frame(dataset = character(),
 
 for(dname in datasets)
 {
-  dataset <- dataset_heart <- read.csv(paste0("results_algorithms_joined/", dname, ".csv")) %>% select(-id, -random)
+  dataset <- read.csv(paste0("results_algorithms_joined/", dname, ".csv")) %>% select(-id, -random)
   dataset$dbscan_0.3 <- factor(dataset$dbscan_0.3, levels = c("yes", "no"))
   dataset$dbscan_0.5 <- factor(dataset$dbscan_0.5, levels = c("yes", "no"))
   dataset$dbscan_0.7 <- factor(dataset$dbscan_0.7, levels = c("yes", "no"))
@@ -67,13 +78,15 @@ for(dname in datasets)
   dataset$rf <- factor(dataset$rf, levels = c("yes", "no"))
   dataset$outlier <- factor(dataset$outlier, levels = c("yes", "no"))
   
-  #print(names(dataset))
+  # Select features that we want:
+  #dataset <- dataset %>% select(-rf)
   
   # Stratified Cross Validation:
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
   
   dataset <- dataset %>% select(outlier:rf)
+  print(names(dataset))
   
   ########### Majority Voting
   dataset_majority_voting <- dataset
@@ -104,6 +117,7 @@ for(dname in datasets)
                         method = "glm",
                         metric = "f1",
                         maximize = TRUE,
+                        preProcess = c("center", "scale"),
                         trControl = fitControl)
   
   ensemble_results <- rbind(ensemble_results, data.frame(

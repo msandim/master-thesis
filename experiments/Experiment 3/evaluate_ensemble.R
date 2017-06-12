@@ -29,6 +29,8 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
+datasets <- "dataset_aloi"
+
 nFolds <- 10
 
 f1_precall <- function(data, lev = NULL, model = NULL) {
@@ -50,12 +52,52 @@ f1_precall <- function(data, lev = NULL, model = NULL) {
   return(c(f1 = f1, precision = precision, recall = recall))
 }
 
-change_lof_to_binary <- function(dataset, columnName)
+change_numeric_to_binary <- function(dataset, columnName)
 {
   outlierRatio <- prop.table(table(dataset$outlier))["yes"]
   dataset[[columnName]] <- ifelse(dataset[[columnName]] > quantile(dataset[[columnName]], prob = 1 - outlierRatio), "yes", "no")
   dataset[[columnName]] <- dataset[[columnName]] %>% factor(levels = c("yes", "no"))
   return(dataset)
+}
+
+featureSelection <- function(dataset)
+{
+  nzv <- nearZeroVar(dataset)
+  dataset <- dataset[, -nzv]
+  return(dataset)
+}
+
+majority_voting <- function(dataset)
+{
+  dataset_majority_voting <- dataset
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_03")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_05")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_08")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_14")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_19")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_25")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_30")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_03")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_05")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_08")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_14")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_19")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_25")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "lof_30")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "nb")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "mlp")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "rf")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "SVM_linear")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "SVM_polynomial")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "SVM_radial")
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "SVM_sigmoid")
+  
+  majority_predictions <- apply(dataset_majority_voting, 1, function(x) names(which.max(table(x))))
+  confusion_majority <- caret::confusionMatrix(majority_predictions %>% factor(levels = c("yes", "no")),
+                                               dataset_majority_voting$outlier %>% factor(levels = c("yes", "no")),
+                                               mode = "prec_recall")
+  
+  return(confusion_majority)
 }
 
 ####### Script starts here ###################################################
@@ -74,8 +116,10 @@ for(dname in datasets)
   dataset$dbscan_0.7 <- factor(dataset$dbscan_0.7, levels = c("yes", "no"))
   dataset$dbscan_0.9 <- factor(dataset$dbscan_0.9, levels = c("yes", "no"))
   dataset$dbscan_1.1 <- factor(dataset$dbscan_1.1, levels = c("yes", "no"))
-  dataset$oneClassSVM <- factor(dataset$oneClassSVM, levels = c("yes", "no"))
-  dataset$rf <- factor(dataset$rf, levels = c("yes", "no"))
+  dataset$oneClassSVM_linear <- factor(dataset$oneClassSVM_linear, levels = c("yes", "no"))
+  dataset$oneClassSVM_polynomial <- factor(dataset$oneClassSVM_polynomial, levels = c("yes", "no"))
+  dataset$oneClassSVM_radial <- factor(dataset$oneClassSVM_radial, levels = c("yes", "no"))
+  dataset$oneClassSVM_sigmoid <- factor(dataset$oneClassSVM_sigmoid, levels = c("yes", "no"))
   dataset$outlier <- factor(dataset$outlier, levels = c("yes", "no"))
   
   # Select features that we want:
@@ -85,33 +129,24 @@ for(dname in datasets)
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
   
-  dataset <- dataset %>% select(outlier:rf)
+  dataset <- dataset %>% select(outlier:SVM_sigmoid)
+  
+  ############### Feature selection
+  #dataset <- featureSelection(dataset)
+  
   print(names(dataset))
   
   ########### Majority Voting
-  dataset_majority_voting <- dataset
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_03")
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_05")
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_08")
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_14")
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_19")
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_25")
-  dataset_majority_voting <- change_lof_to_binary(dataset_majority_voting, "lof_30")
-  
-  majority_predictions <- apply(dataset_majority_voting, 1, function(x) names(which.max(table(x))))
-  confusion_majority <- caret::confusionMatrix(majority_predictions %>% factor(levels = c("yes", "no")),
-                                               dataset_majority_voting$outlier %>% factor(levels = c("yes", "no")),
-                                               mode = "prec_recall")
+  confusion_majority <- majority_voting(dataset)
   
   ensemble_results <- rbind(ensemble_results, data.frame(
     dataset = dname,
     ensemble = "majority",
-    f1 = confusion_majority$byClass[["F1"]],
-    precision = confusion_majority$byClass[["Precision"]],
-    recall = confusion_majority$byClass[["Recall"]]))
+    f1 = ifelse(is.na(confusion_majority$byClass[["F1"]]), 0, confusion_majority$byClass[["F1"]]),
+    precision = ifelse(is.na(confusion_majority$byClass[["Precision"]]), 0, confusion_majority$byClass[["Precision"]]),
+    recall = ifelse(is.na(confusion_majority$byClass[["Recall"]]), 0, confusion_majority$byClass[["Recall"]])))
   
-  #######$$$### GLM
-  
+  ############# GLM
   train_object <- train(outlier ~ .,
                         data = dataset,
                         method = "glm",
@@ -126,7 +161,6 @@ for(dname in datasets)
     f1 = train_object$results$f1,
     precision = train_object$results$precision,
     recall = train_object$results$recall))
-  
   
   print(paste0("Trained ", dname))
 }

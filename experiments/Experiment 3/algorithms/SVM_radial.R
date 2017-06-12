@@ -23,5 +23,7 @@ svm_radial_test <- function(model, data)
   # Scale the data:
   data_model <- predict(model[["scaleObject"]], data_model)
   
-  returnData$SVM_radial <- predict(model[["model"]], data_model, probability = TRUE)[, "yes"]
+  returnData$SVM_radial <- attr(predict(model[["model"]], data_model, probability = TRUE), "probabilities")[, "yes"]
+  
+  return(returnData)
 }

@@ -28,21 +28,25 @@ datasets <- c(
   "dataset_wilt")
 
 algorithms <- c(
-  #"CART",
+  "CART",
   "DBSCAN",
-  #"kmeans",
-  #"kNN",
-  #"kNNDistance",
-  #"linearSVM",
+  "kmeans",
   "LOF",
-  #"naiveBayes",
-  #"neuralNetwork",
-  "oneClassSVM",
+  "naiveBayes",
+  "neuralNetwork",
+  "oneClassSVM_linear",
+  "oneClassSVM_polynomial",
+  "oneClassSVM_radial",
+  "oneClassSVM_sigmoid",
   "randomForest",
+  "SVM_linear",
+  "SVM_polynomial",
+  "SVM_radial",
+  "SVM_sigmoid",
   "random"
 )
 
-unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "kNNDistance", "LOF", "random")
+unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "LOF", "random")
 
 unlink("results_algorithms_joined/*")
 

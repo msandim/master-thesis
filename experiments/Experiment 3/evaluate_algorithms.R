@@ -48,6 +48,8 @@ algorithms <- c(
 )
 
 unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "LOF", "random")
+numericScoreAlgorithms <- c("CART", "kmeans", "LOF", "naiveBayes", "neuralNetwork", "randomForest",
+                            "SVM_linear", "SVM_polynomial", "SVM_radial", "SVM_sigmoid")
 
 results_dataset <- data.frame(dataset = character(),
                               algorithm = character(),
@@ -58,6 +60,7 @@ results_dataset <- data.frame(dataset = character(),
 
 for(dname in datasets)
 {
+  print(dname)
   dataset_original <- read.csv(paste0("datasets_processed/", dname, ".csv"))
   
   for(algname in algorithms)
@@ -79,8 +82,8 @@ for(dname in datasets)
       
       for(variant in algorithm_variants)
       {
-        # If the algorithm is LOF, we will mark the k higher scores as anomalous:
-        if (algname == "LOF")
+        # If the algorithm is numeric-score, we will mark the k higher scores as anomalous:
+        if (algname %in% numericScoreAlgorithms)
         {
           outlierRatio <- prop.table(table(dataset_original$outlier))["yes"]
           dataset_original[[variant]] <- ifelse(dataset_original[[variant]] > quantile(dataset_original[[variant]], prob = 1 - outlierRatio),
@@ -98,9 +101,9 @@ for(dname in datasets)
           dataset = dname,
           algorithm = algname,
           variant = variant,
-          f1 = confusion$byClass[["F1"]],
-          precision = confusion$byClass[["Precision"]],
-          recall = confusion$byClass[["Recall"]]))
+          f1 = ifelse(is.na(confusion$byClass[["F1"]]), 0, confusion$byClass[["F1"]]),
+          precision = ifelse(is.na(confusion$byClass[["Precision"]]), 0, confusion$byClass[["Precision"]]),
+          recall = ifelse(is.na(confusion$byClass[["Recall"]]), 0, confusion$byClass[["Recall"]])))
       }
     }
     else
@@ -126,6 +129,15 @@ for(dname in datasets)
                              ".csv")
           
           algorithm_fold <- read.csv(fileName, stringsAsFactors = FALSE)
+          
+          # If the output is numeric:
+          if (algname %in% numericScoreAlgorithms)
+          {
+            outlierRatio <- prop.table(table(dataset_original$outlier))["yes"]
+            algorithm_fold[[variant]] <- ifelse(algorithm_fold[[variant]] > quantile(algorithm_fold[[variant]], prob = 1 - outlierRatio),
+                                                  "yes",
+                                                  "no")
+          }
           
           confusion <- caret::confusionMatrix(algorithm_fold[[variant]] %>% factor(levels = c("yes", "no")),
                                               algorithm_fold$outlier %>% factor(levels = c("yes", "no")),

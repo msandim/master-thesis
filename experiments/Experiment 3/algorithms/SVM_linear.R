@@ -23,5 +23,7 @@ svm_linear_test <- function(model, data)
   # Scale the data:
   data_model <- predict(model[["scaleObject"]], data_model)
   
-  returnData$SVM_linear <- predict(model[["model"]], data_model, probability = TRUE)[, "yes"]
+  returnData$SVM_linear <- attr(predict(model[["model"]], data_model, probability = TRUE), "probabilities")[, "yes"]
+  
+  return(returnData)
 }

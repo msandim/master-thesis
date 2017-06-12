@@ -23,5 +23,7 @@ svm_polynomial_test <- function(model, data)
   # Scale the data:
   data_model <- predict(model[["scaleObject"]], data_model)
   
-  returnData$SVM_polynomial <- predict(model[["model"]], data_model, probability = TRUE)[, "yes"]
+  returnData$SVM_polynomial <- attr(predict(model[["model"]], data_model, probability = TRUE), "probabilities")[, "yes"]
+  
+  return(returnData)
 }

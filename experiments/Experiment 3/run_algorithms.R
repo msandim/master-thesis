@@ -25,25 +25,26 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
+#datasets <- "dataset_blocks"
 #datasets <- tail(datasets, 1)
 
 algorithms <- c(
-  "CART",
-  "DBSCAN",
-  "kmeans",
-  "LOF",
-  "naiveBayes",
-  "neuralNetwork",
-  "oneClassSVM_linear",
-  "oneClassSVM_polynomial",
-  "oneClassSVM_radial",
-  "oneClassSVM_sigmoid",
-  "randomForest",
-  "SVM_linear",
-  "SVM_polynomial",
-  "SVM_radial",
-  "SVM_sigmoid",
-  "random"
+  #"CART",
+  #"DBSCAN",
+  "kmeans"
+  #"LOF",
+  #"naiveBayes",
+  #"neuralNetwork",
+  #"oneClassSVM_linear",
+  #"oneClassSVM_polynomial",
+  #"oneClassSVM_radial",
+  #"oneClassSVM_sigmoid",
+  #"randomForest",
+  #"SVM_linear",
+  #"SVM_polynomial",
+  #"SVM_radial",
+  #"SVM_sigmoid",
+  #"random"
 )
 
 unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "LOF", "random")

@@ -10,7 +10,7 @@ cart_train <- function(data)
   
   data_model$outlier <- data$outlier
   
-  model <- train(outlier ~ ., data = data_model, method = "rpart", trControl = trainControl(method = "none"))
+  model <- caret::train(outlier ~ ., data = data_model, method = "rpart", trControl = trainControl(method = "none"))
   
   return(list(model = model, scaleObject = scaleObject))
 }

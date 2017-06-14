@@ -62,6 +62,8 @@ buildCommand <- function(algorithm, dataset, fold)
                     " -o outputs/", jobName, "_o.txt",
                     " -e errors/", jobName, "_e.txt",
                     " run_task.sh")
+
+  #paste0("sh run_task.sh " , algorithm, " ", dataset, " ", fold)
 }
 
 #################### Script starts here #####################

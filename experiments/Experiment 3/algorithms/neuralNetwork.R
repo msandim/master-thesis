@@ -10,7 +10,8 @@ neural_net_train <- function(data)
   
   data_model$outlier <- data$outlier
   
-  model <- caret::train(outlier ~ ., data = data_model, method = "mlp", trControl = trainControl(method = "none"))
+  model <- caret::train(outlier ~ ., data = data_model, method = "mlp",
+                        tuneGrid = data.frame(.size = 5), trControl = trainControl(method = "none"))
   
   return(list(model = model, scaleObject = scaleObject))
 }

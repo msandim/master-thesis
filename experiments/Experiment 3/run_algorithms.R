@@ -29,12 +29,12 @@ datasets <- c(
 #datasets <- tail(datasets, 1)
 
 algorithms <- c(
-  #"CART",
+  "CART",
   #"DBSCAN",
-  "kmeans"
+  #"kmeans"
   #"LOF",
   #"naiveBayes",
-  #"neuralNetwork",
+  "neuralNetwork"
   #"oneClassSVM_linear",
   #"oneClassSVM_polynomial",
   #"oneClassSVM_radial",

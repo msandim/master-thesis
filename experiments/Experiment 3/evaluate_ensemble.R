@@ -29,7 +29,7 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
-datasets <- "dataset_aloi"
+#datasets <- "dataset_hepatitis"
 
 nFolds <- 10
 
@@ -60,11 +60,26 @@ change_numeric_to_binary <- function(dataset, columnName)
   return(dataset)
 }
 
-featureSelection <- function(dataset)
+feature_selection <- function(dataset)
 {
-  nzv <- nearZeroVar(dataset)
-  dataset <- dataset[, -nzv]
+  X <- select(dataset, -outlier)
+  Y <- dataset$outlier
+  nzv <- nearZeroVar(X, freqCut = 0, uniqueCut = 0)
+  
+  if (length(nzv) != 0)
+    dataset <- X[, -nzv] %>% mutate(outlier = Y) %>% select(outlier, everything())
+  
   return(dataset)
+}
+
+update_ensemble_results <- function(dname, algorithm, f1, precision, recall)
+{
+  ensemble_results <<- rbind(ensemble_results, data.frame(
+    dataset = dname,
+    ensemble = algorithm,
+    f1 = ifelse(is.na(f1), 0, f1),
+    precision = ifelse(is.na(precision), 0, precision),
+    recall = ifelse(is.na(recall), 0, recall)))
 }
 
 majority_voting <- function(dataset)
@@ -100,6 +115,122 @@ majority_voting <- function(dataset)
   return(confusion_majority)
 }
 
+calc_majority_voting <- function(dataset, dname)
+{
+  confusion_majority <- majority_voting(dataset)
+  update_ensemble_results(dname,
+                          "majority",
+                          confusion_majority$byClass[["F1"]],
+                          confusion_majority$byClass[["Precision"]],
+                          confusion_majority$byClass[["Recall"]])
+}
+
+calc_glm <- function(dataset, dname)
+{
+  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  
+  train_object <- caret::train(outlier ~ .,
+                        data = dataset,
+                        method = "glm",
+                        family="binomial",
+                        control = list(maxit = 100),
+                        metric = "f1",
+                        maximize = TRUE,
+                        preProcess = c("center", "scale"),
+                        trControl = fitControl)
+  
+  update_ensemble_results(dname,
+                          "glm",
+                          train_object$results$f1,
+                          train_object$results$precision,
+                          train_object$results$recall)
+}
+
+calc_cart <- function(dataset, dname)
+{
+  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  
+  train_object <- caret::train(outlier ~ .,
+                        data = dataset,
+                        method = "rpart",
+                        metric = "f1",
+                        maximize = TRUE,
+                        preProcess = c("center", "scale"),
+                        tuneGrid = data.frame(.cp = 0.01), 
+                        trControl = fitControl)
+  
+  update_ensemble_results(dname,
+                          "rpart",
+                          train_object$results$f1,
+                          train_object$results$precision,
+                          train_object$results$recall)
+}
+
+calc_nb <- function(dataset, dname)
+{
+  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  
+  train_object <- caret::train(outlier ~ .,
+                        data = dataset,
+                        method = "nb",
+                        metric = "f1",
+                        maximize = TRUE,
+                        preProcess = c("center", "scale"),
+                        trControl = fitControl)
+  
+  update_ensemble_results(dname,
+                          "nb",
+                          train_object$results$f1,
+                          train_object$results$precision,
+                          train_object$results$recall)
+}
+
+calc_mlp <- function(dataset, dname)
+{
+  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  
+  train_object <- caret::train(outlier ~ .,
+                        data = dataset,
+                        method = "mlp",
+                        metric = "f1",
+                        maximize = TRUE,
+                        preProcess = c("center", "scale"),
+                        tuneGrid = data.frame(.size = 5),
+                        trControl = fitControl)
+  
+  update_ensemble_results(dname,
+                          "mlp",
+                          train_object$results$f1,
+                          train_object$results$precision,
+                          train_object$results$recall)
+}
+
+calc_rf <- function(dataset, dname)
+{
+  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  
+  train_object <- caret::train(outlier ~ .,
+                        data = dataset,
+                        method = "rf",
+                        ntree = 200,
+                        metric = "f1",
+                        maximize = TRUE,
+                        preProcess = c("center", "scale"),
+                        tuneGrid = data.frame(.mtry = floor(sqrt(ncol(dataset %>% select(-outlier))))),
+                        trControl = fitControl)
+  
+  update_ensemble_results(dname,
+                          "rf",
+                          train_object$results$f1,
+                          train_object$results$precision,
+                          train_object$results$recall)
+}
+
 ####### Script starts here ###################################################
 
 ensemble_results <- data.frame(dataset = character(),
@@ -126,43 +257,35 @@ for(dname in datasets)
   #dataset <- dataset %>% select(-rf)
   
   # Stratified Cross Validation:
-  cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
-  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
   
   dataset <- dataset %>% select(outlier:SVM_sigmoid)
   
   ############### Feature selection
-  #dataset <- featureSelection(dataset)
+  dataset <- feature_selection(dataset)
   
   print(names(dataset))
   
-  ########### Majority Voting
-  confusion_majority <- majority_voting(dataset)
+  calc_majority_voting(dataset, dname)
+  print("mv")
   
-  ensemble_results <- rbind(ensemble_results, data.frame(
-    dataset = dname,
-    ensemble = "majority",
-    f1 = ifelse(is.na(confusion_majority$byClass[["F1"]]), 0, confusion_majority$byClass[["F1"]]),
-    precision = ifelse(is.na(confusion_majority$byClass[["Precision"]]), 0, confusion_majority$byClass[["Precision"]]),
-    recall = ifelse(is.na(confusion_majority$byClass[["Recall"]]), 0, confusion_majority$byClass[["Recall"]])))
+  calc_glm(dataset, dname)
+  print("glm")
+  
+  calc_cart(dataset, dname)
+  print("rpart")
+  
+  #calc_nb(dataset, dname)
+  #print("nb")
+  
+  calc_mlp(dataset, dname)
+  print("mlp")
+  
+  calc_rf(dataset, dname)
+  print("rf")
   
   ############# GLM
-  train_object <- train(outlier ~ .,
-                        data = dataset,
-                        method = "glm",
-                        metric = "f1",
-                        maximize = TRUE,
-                        preProcess = c("center", "scale"),
-                        trControl = fitControl)
   
-  ensemble_results <- rbind(ensemble_results, data.frame(
-    dataset = dname,
-    ensemble = "glm",
-    f1 = train_object$results$f1,
-    precision = train_object$results$precision,
-    recall = train_object$results$recall))
-  
-  print(paste0("Trained ", dname))
+  print(paste0("******** Trained ", dname, "********"))
 }
 
 # Save the dataset:

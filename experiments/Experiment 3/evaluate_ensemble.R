@@ -29,7 +29,7 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
-#datasets <- "dataset_hepatitis"
+#datasets <- "dataset_arr"
 
 nFolds <- 10
 
@@ -54,9 +54,13 @@ f1_precall <- function(data, lev = NULL, model = NULL) {
 
 change_numeric_to_binary <- function(dataset, columnName)
 {
-  outlierRatio <- prop.table(table(dataset$outlier))["yes"]
-  dataset[[columnName]] <- ifelse(dataset[[columnName]] > quantile(dataset[[columnName]], prob = 1 - outlierRatio), "yes", "no")
-  dataset[[columnName]] <- dataset[[columnName]] %>% factor(levels = c("yes", "no"))
+  if(columnName %in% colnames(dataset))
+  {
+    outlierRatio <- prop.table(table(dataset$outlier))["yes"]
+    dataset[[columnName]] <- ifelse(dataset[[columnName]] > quantile(dataset[[columnName]], prob = 1 - outlierRatio), "yes", "no")
+    dataset[[columnName]] <- dataset[[columnName]] %>% factor(levels = c("yes", "no"))
+  }
+  
   return(dataset)
 }
 
@@ -128,7 +132,7 @@ calc_majority_voting <- function(dataset, dname)
 calc_glm <- function(dataset, dname)
 {
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
-  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
                         data = dataset,
@@ -150,7 +154,7 @@ calc_glm <- function(dataset, dname)
 calc_cart <- function(dataset, dname)
 {
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
-  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
                         data = dataset,
@@ -171,7 +175,7 @@ calc_cart <- function(dataset, dname)
 calc_nb <- function(dataset, dname)
 {
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
-  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
                         data = dataset,
@@ -191,7 +195,7 @@ calc_nb <- function(dataset, dname)
 calc_mlp <- function(dataset, dname)
 {
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
-  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
                         data = dataset,
@@ -212,7 +216,7 @@ calc_mlp <- function(dataset, dname)
 calc_rf <- function(dataset, dname)
 {
   cvIndex <- createFolds(dataset$outlier, k = nFolds, returnTrain = TRUE)
-  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall)
+  fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
                         data = dataset,
@@ -265,25 +269,23 @@ for(dname in datasets)
   
   print(names(dataset))
   
-  calc_majority_voting(dataset, dname)
   print("mv")
+  calc_majority_voting(dataset, dname)
   
-  calc_glm(dataset, dname)
   print("glm")
+  calc_glm(dataset, dname)
   
-  calc_cart(dataset, dname)
   print("rpart")
+  calc_cart(dataset, dname)
   
   #calc_nb(dataset, dname)
   #print("nb")
   
-  calc_mlp(dataset, dname)
   print("mlp")
+  calc_mlp(dataset, dname)
   
-  calc_rf(dataset, dname)
   print("rf")
-  
-  ############# GLM
+  calc_rf(dataset, dname)
   
   print(paste0("******** Trained ", dname, "********"))
 }

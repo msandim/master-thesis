@@ -29,12 +29,12 @@ datasets <- c(
 #datasets <- tail(datasets, 1)
 
 algorithms <- c(
-  "CART",
+  #"CART",
   #"DBSCAN",
-  #"kmeans"
+  "kmeans"
   #"LOF",
   #"naiveBayes",
-  "neuralNetwork"
+  #"neuralNetwork"
   #"oneClassSVM_linear",
   #"oneClassSVM_polynomial",
   #"oneClassSVM_radial",
@@ -51,19 +51,19 @@ unsupervisedAlgorithms <- c("DBSCAN", "kmeans", "LOF", "random")
 
 buildCommand <- function(algorithm, dataset, fold)
 {
-  jobName <- paste0(dataset, "_", algorithm, "_", fold)
-  paste0("qsub -v dataset=\'",
-                    dataset,
-                    "\',algorithm=\'",
-                    algorithm,
-                    "\',fold=",
-                    fold,
-                    " -N ", jobName,
-                    " -o outputs/", jobName, "_o.txt",
-                    " -e errors/", jobName, "_e.txt",
-                    " run_task.sh")
+  # jobName <- paste0(dataset, "_", algorithm, "_", fold)
+  # paste0("qsub -v dataset=\'",
+  #                   dataset,
+  #                   "\',algorithm=\'",
+  #                   algorithm,
+  #                   "\',fold=",
+  #                   fold,
+  #                   " -N ", jobName,
+  #                   " -o outputs/", jobName, "_o.txt",
+  #                   " -e errors/", jobName, "_e.txt",
+  #                   " run_task.sh")
 
-  #paste0("sh run_task.sh " , algorithm, " ", dataset, " ", fold)
+  paste0("sh run_task.sh " , algorithm, " ", dataset, " ", fold)
 }
 
 #################### Script starts here #####################

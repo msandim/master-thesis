@@ -257,13 +257,21 @@ for(dname in datasets)
   dataset$oneClassSVM_sigmoid <- factor(dataset$oneClassSVM_sigmoid, levels = c("yes", "no"))
   dataset$outlier <- factor(dataset$outlier, levels = c("yes", "no"))
   
-  # Select features that we want:
-  #dataset <- dataset %>% select(-rf)
-  
-  # Stratified Cross Validation:
-  
   dataset <- dataset %>% select(outlier:SVM_sigmoid)
   
+  # Ensemble of supervised/unsupervised:
+  # Supervised
+  # dataset <- dataset %>% select(-starts_with("dbscan"),
+  #                               -starts_with("kmeans"),
+  #                               -starts_with("lof"),
+  #                               -starts_with("oneClassSVM"))
+  # Unsupervised
+  dataset <- dataset %>% select(-cart,
+                                -nb,
+                                -mlp,
+                                -rf,
+                                -starts_with("SVM"))
+
   ############### Feature selection
   dataset <- feature_selection(dataset)
   

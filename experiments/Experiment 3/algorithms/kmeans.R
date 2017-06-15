@@ -9,7 +9,7 @@ kmeans_dist <- function(data, k)
     
     centroid <- model$centers[data_instance$cluster, ]
     
-    data_instance %>% select(-cluster)
+    data_instance <- data_instance %>% select(-cluster)
 
     return(dist(rbind(centroid, data_instance))[[1]])
   })

@@ -29,7 +29,7 @@ datasets <- c(
   "dataset_stamps",
   "dataset_wilt")
 
-#datasets <- "dataset_arr"
+#datasets <- "dataset_iono"
 
 nFolds <- 10
 
@@ -70,8 +70,9 @@ feature_selection <- function(dataset)
   Y <- dataset$outlier
   nzv <- nearZeroVar(X, freqCut = 0, uniqueCut = 0)
   
-  if (length(nzv) != 0)
-    dataset <- X[, -nzv] %>% mutate(outlier = Y) %>% select(outlier, everything())
+  # If the neither of our variables have 0 variance, or all of them // tbl_df to avoid dataframe being transformed into list
+  if (length(nzv) != 0 && length(nzv) != ncol(X))
+    dataset <- X[, -nzv] %>% tbl_df %>% mutate(outlier = Y) %>% select(outlier, everything())
   
   return(dataset)
 }
@@ -89,6 +90,7 @@ update_ensemble_results <- function(dname, algorithm, f1, precision, recall)
 majority_voting <- function(dataset)
 {
   dataset_majority_voting <- dataset
+  dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "cart")
   dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_03")
   dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_05")
   dataset_majority_voting <- change_numeric_to_binary(dataset_majority_voting, "kmeans_08")
@@ -135,14 +137,14 @@ calc_glm <- function(dataset, dname)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
-                        data = dataset,
-                        method = "glm",
-                        family="binomial",
-                        control = list(maxit = 100),
-                        metric = "f1",
-                        maximize = TRUE,
-                        preProcess = c("center", "scale"),
-                        trControl = fitControl)
+                               data = dataset,
+                               method = "glm",
+                               family="binomial",
+                               control = list(maxit = 100),
+                               metric = "f1",
+                               maximize = TRUE,
+                               preProcess = c("center", "scale"),
+                               trControl = fitControl)
   
   update_ensemble_results(dname,
                           "glm",
@@ -157,13 +159,13 @@ calc_cart <- function(dataset, dname)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
-                        data = dataset,
-                        method = "rpart",
-                        metric = "f1",
-                        maximize = TRUE,
-                        preProcess = c("center", "scale"),
-                        tuneGrid = data.frame(.cp = 0.01), 
-                        trControl = fitControl)
+                               data = dataset,
+                               method = "rpart",
+                               metric = "f1",
+                               maximize = TRUE,
+                               preProcess = c("center", "scale"),
+                               tuneGrid = data.frame(.cp = 0.01), 
+                               trControl = fitControl)
   
   update_ensemble_results(dname,
                           "rpart",
@@ -178,12 +180,12 @@ calc_nb <- function(dataset, dname)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
-                        data = dataset,
-                        method = "nb",
-                        metric = "f1",
-                        maximize = TRUE,
-                        preProcess = c("center", "scale"),
-                        trControl = fitControl)
+                               data = dataset,
+                               method = "nb",
+                               metric = "f1",
+                               maximize = TRUE,
+                               preProcess = c("center", "scale"),
+                               trControl = fitControl)
   
   update_ensemble_results(dname,
                           "nb",
@@ -198,13 +200,13 @@ calc_mlp <- function(dataset, dname)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
-                        data = dataset,
-                        method = "mlp",
-                        metric = "f1",
-                        maximize = TRUE,
-                        preProcess = c("center", "scale"),
-                        tuneGrid = data.frame(.size = 5),
-                        trControl = fitControl)
+                               data = dataset,
+                               method = "mlp",
+                               metric = "f1",
+                               maximize = TRUE,
+                               preProcess = c("center", "scale"),
+                               tuneGrid = data.frame(.size = 5),
+                               trControl = fitControl)
   
   update_ensemble_results(dname,
                           "mlp",
@@ -219,14 +221,14 @@ calc_rf <- function(dataset, dname)
   fitControl <- trainControl(index = cvIndex, method = 'cv', number = nFolds, summaryFunction = f1_precall, verboseIter = TRUE)
   
   train_object <- caret::train(outlier ~ .,
-                        data = dataset,
-                        method = "rf",
-                        ntree = 200,
-                        metric = "f1",
-                        maximize = TRUE,
-                        preProcess = c("center", "scale"),
-                        tuneGrid = data.frame(.mtry = floor(sqrt(ncol(dataset %>% select(-outlier))))),
-                        trControl = fitControl)
+                               data = dataset,
+                               method = "rf",
+                               ntree = 200,
+                               metric = "f1",
+                               maximize = TRUE,
+                               preProcess = c("center", "scale"),
+                               tuneGrid = data.frame(.mtry = floor(sqrt(ncol(dataset %>% select(-outlier))))),
+                               trControl = fitControl)
   
   update_ensemble_results(dname,
                           "rf",
@@ -261,17 +263,52 @@ for(dname in datasets)
   
   # Ensemble of supervised/unsupervised:
   # Supervised
-  # dataset <- dataset %>% select(-starts_with("dbscan"),
+  #dataset <- dataset %>% select(-starts_with("dbscan"),
   #                               -starts_with("kmeans"),
   #                               -starts_with("lof"),
   #                               -starts_with("oneClassSVM"))
-  # Unsupervised
-  dataset <- dataset %>% select(-cart,
-                                -nb,
-                                -mlp,
-                                -rf,
-                                -starts_with("SVM"))
-
+  # Unsupervised without One-class
+  #dataset <- dataset %>% select(-cart,
+  #                              -nb,
+  #                              -mlp,
+  #                              -rf,
+  #                              -starts_with("SVM"),
+  #                              -starts_with("oneClassSVM"))
+  # Unsupervised w/ One-class
+  #dataset <- dataset %>% select(-cart,
+  #                              -nb,
+  #                              -mlp,
+  #                              -rf,
+  #                              -starts_with("SVM"))
+  
+  # LOFs
+  #dataset <- dataset %>% select(outlier,
+  #                              starts_with("lof"))
+  # SVMs
+  #dataset <- dataset %>% select(outlier,
+  #                              starts_with("SVM"))
+  # One-Class
+  #dataset <- dataset %>% select(outlier,
+  #                              starts_with("oneClassSVM"))
+  # SVMs + One-Class
+  #dataset <- dataset %>% select(outlier,
+  #                              starts_with("SVM"),
+  #                              starts_with("oneClassSVM"))
+  # DBSCANs
+  dataset <- dataset %>% select(outlier,
+                                starts_with("dbscan"))
+  # kmeans
+  #dataset <- dataset %>% select(outlier,
+  #                              starts_with("kmeans"))
+  # DBSCANs + kmeans
+  #dataset <- dataset %>% select(outlier,
+  #                              starts_with("dbscan"),
+  #                              starts_with("kmeans"))
+  # Tree-based
+  #dataset <- dataset %>% select(outlier,
+  #                              cart,
+  #                              rf)
+  
   ############### Feature selection
   dataset <- feature_selection(dataset)
   
@@ -293,7 +330,11 @@ for(dname in datasets)
   calc_mlp(dataset, dname)
   
   print("rf")
-  calc_rf(dataset, dname)
+  if (dname != "dataset_waveform" && dname != "dataset_wdbc" && dname != "dataset_wpbc" && dname != "dataset_arr" && dname != "dataset_cardio" && dname != "dataset_heart" && dname != "dataset_hepatitis" && dname != "dataset_ads" && dname != "dataset_parkinson") # This dataset takes a lot in random forests
+    calc_rf(dataset, dname)
+  else
+    update_ensemble_results(dname, "rf", NA, NA, NA)
+  
   
   print(paste0("******** Trained ", dname, "********"))
 }

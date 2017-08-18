@@ -56,7 +56,15 @@ results_dataset <- data.frame(dataset = character(),
                               variant = character(),
                               f1 = numeric(),
                               precision = numeric(),
-                              recall = numeric())
+                              recall = numeric(),
+                              f20 = numeric(),
+                              f05 = numeric()
+                              )
+
+f_measure <- function(precision, recall, beta = 1)
+{
+  (1 + beta^2) * ((precision * recall) / ((precision * beta^2) + recall))
+}
 
 for(dname in datasets)
 {
@@ -96,14 +104,19 @@ for(dname in datasets)
                                             dataset_original$outlier %>% factor(levels = c("yes", "no")),
                                             mode = "prec_recall")
         
+        precision <- ifelse(is.na(confusion$byClass[["Precision"]]), 0, confusion$byClass[["Precision"]])
+        recall <- ifelse(is.na(confusion$byClass[["Recall"]]), 0, confusion$byClass[["Recall"]])
+        
         # Add entry to dataset of results:
         results_dataset <- rbind(results_dataset, data.frame(
           dataset = dname,
           algorithm = algname,
           variant = variant,
           f1 = ifelse(is.na(confusion$byClass[["F1"]]), 0, confusion$byClass[["F1"]]),
-          precision = ifelse(is.na(confusion$byClass[["Precision"]]), 0, confusion$byClass[["Precision"]]),
-          recall = ifelse(is.na(confusion$byClass[["Recall"]]), 0, confusion$byClass[["Recall"]])))
+          precision = precision,
+          recall = recall,
+          f20 = f_measure(precision, recall, 2.0),
+          f05 = f_measure(precision, recall, 0.5)))
       }
     }
     else
@@ -117,6 +130,8 @@ for(dname in datasets)
         f1s <- numeric()
         precisions <- numeric()
         recalls <- numeric()
+        f20s <- numeric()
+        f05s <- numeric()
         
         for(fold in 1:10)
         {
@@ -146,12 +161,19 @@ for(dname in datasets)
           f1s <- c(f1s, confusion$byClass[["F1"]])
           precisions <- c(precisions, confusion$byClass[["Precision"]])
           recalls <- c(recalls, confusion$byClass[["Recall"]])
+          
+          precision_fold <- ifelse(is.na(confusion$byClass[["Precision"]]), 0, confusion$byClass[["Precision"]])
+          recall_fold <- ifelse(is.na(confusion$byClass[["Recall"]]), 0, confusion$byClass[["Recall"]])
+          f20s = c(f20s, f_measure(precision_fold, recall_fold, 2.0))
+          f05s = c(f05s, f_measure(precision_fold, recall_fold, 0.5))
         }
         
         # All the NAs will be replaced by zero:
         f1s[is.na(f1s)] <- 0
         precisions[is.na(precisions)] <- 0
         recalls[is.na(recalls)] <- 0
+        f20s[is.na(f20s)] <- 0
+        f05s[is.na(f05s)] <- 0
         
         results_dataset <- rbind(results_dataset, data.frame(
           dataset = dname,
@@ -159,7 +181,9 @@ for(dname in datasets)
           variant = variant,
           f1 = mean(f1s, na.rm = TRUE),
           precision = mean(precisions, na.rm = TRUE),
-          recall = mean(recalls, na.rm = TRUE)))
+          recall = mean(recalls, na.rm = TRUE),
+          f20 = mean(f20s, na.rm = TRUE),
+          f05 = mean(f05s, na.rm = TRUE)))
       }
     }
   }

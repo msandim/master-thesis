@@ -1,0 +1,201 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{none/global/}
+    \entry{Aggarwal:2015:DMT:2778285}{book}{}
+      \name{author}{1}{}{%
+        {{hash=33b9584047f9ea4881dc47a9eed00e74}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Publishing Company, Incorporated}%
+      }
+      \strng{namehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{fullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authornamehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authorfullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \field{sortinit}{1}
+      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-319-14142-8}
+      \field{title}{{Data Mining: The Textbook}}
+      \field{year}{2015}
+    \endentry
+    \entry{Kandhari2009}{article}{}
+      \name{author}{5}{}{%
+        {{hash=80d05e14fcf81ade006e2f0fffbec4ce}{%
+           family={Kandhari},
+           familyi={K\bibinitperiod},
+           given={Rupali},
+           giveni={R\bibinitperiod}}}%
+        {{hash=818074037ed2f89ce51237af38dec11f}{%
+           family={Chandola},
+           familyi={C\bibinitperiod},
+           given={Varun},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4ddb7b9c38d8c15a70bc573ba4e51ea9}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Arindam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=efb90d78e35ff61d3bc639f5c6f3d822}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Vipin},
+           giveni={V\bibinitperiod}}}%
+        {{hash=80d05e14fcf81ade006e2f0fffbec4ce}{%
+           family={Kandhari},
+           familyi={K\bibinitperiod},
+           given={Rupali},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{04f46d1e2c1333d32029981db14e2aee}
+      \strng{fullhash}{4245c7367fcea3b56c3b14fbb7c64d4e}
+      \strng{authornamehash}{04f46d1e2c1333d32029981db14e2aee}
+      \strng{authorfullhash}{4245c7367fcea3b56c3b14fbb7c64d4e}
+      \field{sortinit}{2}
+      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Anomaly detection is an important problem that has been researched within diverse research areas and application domains.Many anomaly detection techniques have been specifically developed for certain appli- cation domains, while others are more generic. This survey tries to provide a structured and comprehensive overview of the research on anomaly detection.We have grouped existing techniques into different categories based on the underlying approach adopted by each technique. For each category we have identified key as- sumptions, which are used by the techniques to differentiate between normal and anomalous behavior.When applying a given technique to a particular domain, these assumptions can be used as guidelines to assess the effectiveness of the technique in that domain. For each category, we provide a basic anomaly detection technique, and then show how the different existing techniques in that category are variants of the basic technique. This template provides an easier and more succinct understanding of the techniques belonging to each category. Further, for each category, we identify the advantages and disadvantages of the techniques in that category.We also provide a discussion on the computational complexity of the techniques since it is an important issue in real application domains. We hope that this survey will provide a better understanding of the different directions in which research has been done on this topic, and how techniques developed in one area can be applied in domains for which they were not intended to begin with}
+      \field{isbn}{0818663359}
+      \field{issn}{03600300}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{number}{3}
+      \field{title}{{Anomaly detection}}
+      \field{volume}{41}
+      \field{year}{2009}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/1541880.1541882
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Kandhari et al. - 2009 - Anomaly detection.pdf:pdf
+      \endverb
+      \keyw{Anomaly detection,outlier detection}
+    \endentry
+    \entry{Aggarwal:2013:OA:2436823}{book}{}
+      \name{author}{1}{}{%
+        {{hash=33b9584047f9ea4881dc47a9eed00e74}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Publishing Company, Incorporated}%
+      }
+      \strng{namehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{fullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authornamehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authorfullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \field{sortinit}{3}
+      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{1461463955, 9781461463955}
+      \field{title}{{Outlier Analysis}}
+      \field{year}{2017}
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Aggarwal - 2017 - Outlier Analysis.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Campos2016}{article}{}
+      \name{author}{8}{}{%
+        {{hash=e2cdb018972038dd55560992f8b7300a}{%
+           family={Campos},
+           familyi={C\bibinitperiod},
+           given={Guilherme\bibnamedelima O.},
+           giveni={G\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=cbfafee6627ecbb346007c41a5787a4e}{%
+           family={Zimek},
+           familyi={Z\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=802157026f850823b2027c2100cb359a}{%
+           family={Sander},
+           familyi={S\bibinitperiod},
+           given={Jörg},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2c2687e4a1b268d1aae03001329bf294}{%
+           family={Campello},
+           familyi={C\bibinitperiod},
+           given={Ricardo\bibnamedelimb J.\bibnamedelimi G.\bibnamedelimi B.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=38f453607e6cbb2c3efe156849a986dd}{%
+           family={Micenková},
+           familyi={M\bibinitperiod},
+           given={Barbora},
+           giveni={B\bibinitperiod}}}%
+        {{hash=d5aa8a82c7032184011fd502a43e205a}{%
+           family={Schubert},
+           familyi={S\bibinitperiod},
+           given={Erich},
+           giveni={E\bibinitperiod}}}%
+        {{hash=69b6af16c92b02af90eb0a2864250685}{%
+           family={Assent},
+           familyi={A\bibinitperiod},
+           given={Ira},
+           giveni={I\bibinitperiod}}}%
+        {{hash=b590ff0102c446fdeaea2776194410ed}{%
+           family={Houle},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{a08a105f4c4cfa9e09f0addd1eba9c75}
+      \strng{fullhash}{79bc58cd003714be8736c5cd9d2a895e}
+      \strng{authornamehash}{a08a105f4c4cfa9e09f0addd1eba9c75}
+      \strng{authorfullhash}{79bc58cd003714be8736c5cd9d2a895e}
+      \field{sortinit}{4}
+      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The evaluation of unsupervised outlier detection algorithms is a constant challenge in data mining research. Little is known regarding the strengths and weak-nesses of different standard outlier detection models, and the impact of parameter G. O. Campos et al. choices for these algorithms. The scarcity of appropriate benchmark datasets with ground truth annotation is a significant impediment to the evaluation of outlier meth-ods. Even when labeled datasets are available, their suitability for the outlier detection task is typically unknown. Furthermore, the biases of commonly-used evaluation mea-sures are not fully understood. It is thus difficult to ascertain the extent to which newly-proposed outlier detection methods improve over established methods. In this paper, we perform an extensive experimental study on the performance of a represen-tative set of standard k nearest neighborhood-based methods for unsupervised outlier detection, across a wide variety of datasets prepared for this purpose. Based on the overall performance of the outlier detection methods, we provide a characterization of the datasets themselves, and discuss their suitability as outlier detection benchmark sets. We also examine the most commonly-used measures for comparing the perfor-mance of different methods, and suggest adaptations that are more suitable for the evaluation of outlier detection results.}
+      \field{isbn}{1061801504448}
+      \field{issn}{1573756X}
+      \field{journaltitle}{Data Mining and Knowledge Discovery}
+      \field{month}{7}
+      \field{number}{4}
+      \field{title}{{On the evaluation of unsupervised outlier detection: measures, datasets, and an empirical study}}
+      \field{volume}{30}
+      \field{year}{2016}
+      \field{pages}{891\bibrangedash 927}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1007/s10618-015-0444-8
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Campos et al. - 2016 - On the evaluation of unsupervised outlier detection measures, datasets, and an empirical study(3).pdf:pdf
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s10618-015-0444-8
+      \endverb
+      \keyw{Datasets,Evaluation,Measures,Unsupervised outlier detection}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

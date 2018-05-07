@@ -1,0 +1,31 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of one contextual anomaly ($t_2$) in a monthly temperature time series dataset. Source: \cite {Kandhari2009}.\relax }}{4}{figure.caption.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of one collective anomaly in a human electrocardiogram output time series dataset. Source: \cite {Kandhari2009}.\relax }}{5}{figure.caption.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Example of a 2 dimensional dataset containing regions with different density values. Source: \cite {Kandhari2009}.\relax }}{7}{figure.caption.12}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Scheme representing the Ensemble Process. Adapted from \cite {Mendes-Moreira2012}.\relax }}{13}{figure.caption.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Scheme of the Stacked Generalization approach. Source: \cite {Polikar2012a}.\relax }}{18}{figure.caption.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Scheme of the Mixture of Experts approach. Source: \cite {Polikar2012a}.\relax }}{18}{figure.caption.26}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Mean value across all datasets of the Jaccard metric between each par of techniques.\relax }}{43}{figure.caption.47}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Standard deviation value across all datasets of the Jaccard metric between each par of techniques.\relax }}{44}{figure.caption.48}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

@@ -1,0 +1,58 @@
+%some macro definitions
+
+% For footnotes to work in tables:
+\usepackage{footnote}
+\makesavenoteenv{table}
+\makesavenoteenv{tabular}
+
+% format
+\newcommand{\class}[1]{{\normalfont\slshape #1\/}}
+
+% entities
+\newcommand{\Feup}{Faculdade de Engenharia da Universidade do Porto}
+
+\newcommand{\svg}{\class{SVG}}
+\newcommand{\scada}{\class{SCADA}}
+\newcommand{\scadadms}{\class{SCADA/DMS}}
+
+%% For notes:
+\usepackage{todonotes}
+\newcommand\miguel[1]{\todo[color=green!40]{\small} #1}
+
+% References
+\usepackage{csquotes}
+\usepackage[style=trad-alpha, backend=biber, maxcitenames=2]{biblatex}
+\addbibresource{library.bib}
+\addbibresource{web.bib}
+
+\newcommand { \PrintBibliographyBiblatex }
+{%
+	\renewcommand{\bibname}{References}%
+	\cleardoublepage%
+	\phantomsection%
+	\addcontentsline{toc}{chapter}{References}%
+	\begin{singlespace}
+		\printbibliography
+	\end{singlespace}
+}
+
+% Definitions:
+\usepackage{amsmath,amssymb}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\newtheorem{definition}{Definition}[section]
+
+\usepackage{float} % floating elements
+\usepackage{booktabs} % tables
+\usepackage{multirow} % For the tables
+
+% For floats to not appear after
+\usepackage{placeins}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}

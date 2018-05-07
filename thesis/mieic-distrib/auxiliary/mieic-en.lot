@@ -1,0 +1,51 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.1}{\ignorespaces Anomaly Detection techniques used in this study for each nomenclature group and learning mode.\relax }}{25}{table.caption.30}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Anomaly Detection techniques used in this study regarding the type of output.\relax }}{25}{table.caption.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter values for supervised Anomaly Detection techniques.\relax }}{26}{table.caption.32}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.4}{\ignorespaces Parameter values for semi-supervised Anomaly Detection techniques.\relax }}{27}{table.caption.33}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.5}{\ignorespaces Parameter values for unsupervised Anomaly Detection techniques.\relax }}{27}{table.caption.34}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.6}{\ignorespaces Number and ratio of \textit {anomalous} and \textit {normal} data instances in the datasets used throughout the experimental evaluation. The datasets are ordered in decreasing order by the number of outliers.\relax }}{30}{table.caption.35}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.7}{\ignorespaces Confusion matrix in the context of Anomaly Detection.\relax }}{31}{table.caption.36}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.8}{\ignorespaces Representation of the similarity cases between two Anomaly Detection techniques A and B, where each letter $a,b,c,d$ represents the number of occurrences for each case.\relax }}{32}{table.caption.37}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.9}{\ignorespaces Parameter values for the meta-classifiers.\relax }}{34}{table.caption.38}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.1}{\ignorespaces Measurements of the metrics F1, Precision and Recall for the algorithms with highest F1 in each dataset.\relax }}{36}{table.caption.40}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.2}{\ignorespaces Measurements of the metrics F1, Precision and Recall for the semi-supervised algorithms with highest F1 in each dataset.\relax }}{37}{table.caption.41}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.3}{\ignorespaces Measurements of the metrics F1, Precision and Recall for the unsupervised algorithms with highest F1 in each dataset.\relax }}{38}{table.caption.42}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.4}{\ignorespaces Measurements of the metrics F0.5, Precision and Recall for the semi-supervised algorithms with highest F1 in each dataset.\relax }}{39}{table.caption.43}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.5}{\ignorespaces Measurements of the metrics F2, Precision and Recall for the semi-supervised algorithms with highest F1 in each dataset.\relax }}{40}{table.caption.44}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.6}{\ignorespaces Number of techniques (and each of its variants) that had a superior value on F1 metric to the \textit {random} technique in each dataset. The total number of techniques/variants tested was 31.\relax }}{41}{table.caption.45}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.7}{\ignorespaces Number of datasets for which each technique had at least one variant with a better F1 value than the one from the \textit {random} technique.\relax }}{41}{table.caption.46}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.8}{\ignorespaces Measurements of the metric F1 for the Stacking approaches that outperform the best algorithm for each dataset.\relax }}{45}{table.caption.49}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.9}{\ignorespaces Measurements of the metric F1 for the Stacking approaches that outperform the best algorithm for each dataset, when considering Majority Voting as an alternative to a meta-classifier.\relax }}{46}{table.caption.50}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

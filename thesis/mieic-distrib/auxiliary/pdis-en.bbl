@@ -1,0 +1,1102 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{anyt/global/}
+    \entry{Aggarwal2013}{article}{}
+      \name{author}{1}{}{%
+        {{hash=33b9584047f9ea4881dc47a9eed00e74}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{fullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authornamehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authorfullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \field{labelalpha}{Agg13}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ensemble analysis is a widely used meta-algorithm for many data mining problems such as classification and clustering. Numerous ensemble-based algorithms have been proposed in the literature for these problems. Compared to the cluster-ing and classification problems, ensemble analysis has been studied in a limited way in the outlier detection literature. In some cases, ensemble analysis techniques have been im-plicitly used by many outlier analysis algorithms, but the approach is often buried deep into the algorithm and not for-mally recognized as a general-purpose meta-algorithm. This is in spite of the fact that this problem is rather important in the context of outlier analysis. This paper discusses the various methods which are used in the literature for outlier ensembles and the general principles by which such analysis can be made more effective. A discussion is also provided on how outlier ensembles relate to the ensemble-techniques used commonly for other data mining problems.}
+      \field{issn}{1931-0145}
+      \field{journaltitle}{ACM SIGKDD Explorations Newsletter}
+      \field{number}{2}
+      \field{title}{{Outlier ensembles: position paper}}
+      \field{volume}{14}
+      \field{year}{2013}
+      \field{pages}{49\bibrangedash 58}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/2481244.2481252
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Aggarwal - Unknown - Outlier Ensembles Position Paper.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Aggarwal:2015:DMT:2778285}{book}{}
+      \name{author}{1}{}{%
+        {{hash=33b9584047f9ea4881dc47a9eed00e74}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Publishing Company, Incorporated}%
+      }
+      \strng{namehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{fullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authornamehash}{33b9584047f9ea4881dc47a9eed00e74}
+      \strng{authorfullhash}{33b9584047f9ea4881dc47a9eed00e74}
+      \field{labelalpha}{Agg15}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-319-14142-8}
+      \field{title}{{Data Mining: The Textbook}}
+      \field{year}{2015}
+    \endentry
+    \entry{atzori2010internet}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ad2aa762c0a8006a1914b9298952e5d8}{%
+           family={Atzori},
+           familyi={A\bibinitperiod},
+           given={Luigi},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2dbff5b960cb21204fc50b6941f42947}{%
+           family={Iera},
+           familyi={I\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=04b46031fe439f48519cec659c1d7e36}{%
+           family={Morabito},
+           familyi={M\bibinitperiod},
+           given={Giacomo},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{81d69f6a7998d24b021610d2ad8b5b37}
+      \strng{fullhash}{d7d33a3e93b65ab811b96314bcf90b0a}
+      \strng{authornamehash}{81d69f6a7998d24b021610d2ad8b5b37}
+      \strng{authorfullhash}{d7d33a3e93b65ab811b96314bcf90b0a}
+      \field{labelalpha}{AIM10}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer networks}
+      \field{number}{15}
+      \field{title}{{The internet of things: A survey}}
+      \field{volume}{54}
+      \field{year}{2010}
+      \field{pages}{2787\bibrangedash 2805}
+      \range{pages}{19}
+    \endentry
+    \entry{Breunig}{article}{}
+      \name{author}{4}{}{%
+        {{hash=94efb17d7a901dec35626d022e6c90e7}{%
+           family={Breunig},
+           familyi={B\bibinitperiod},
+           given={Markus\bibnamedelima M},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9559fe65ed2c0877cf14a66fe1f8e9b3}{%
+           family={Kriegel},
+           familyi={K\bibinitperiod},
+           given={Hans-Peter},
+           giveni={H\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=e80ab77153f0b6868f95475d09b13a3e}{%
+           family={Ng},
+           familyi={N\bibinitperiod},
+           given={Raymond\bibnamedelima T},
+           giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=802157026f850823b2027c2100cb359a}{%
+           family={Sander},
+           familyi={S\bibinitperiod},
+           given={Jörg},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{7ae3bd2a48dd0ed8d2a805660a6f945e}
+      \strng{fullhash}{c1754485198c6141eceaf6157a6f11be}
+      \strng{authornamehash}{7ae3bd2a48dd0ed8d2a805660a6f945e}
+      \strng{authorfullhash}{c1754485198c6141eceaf6157a6f11be}
+      \field{labelalpha}{BKNS00}
+      \field{sortinit}{B}
+      \field{sortinithash}{5f6fa000f686ee5b41be67ba6ff7962d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{For many KDD applications, such as detecting criminal activities in E-commerce, finding the rare instances or the outliers, can be more interesting than finding the common patterns. Existing work in out- lier detection regards being an outlier as a binary property. In this paper, we contend that for many scenarios, it is more meaningful to assign to each object a degree of being an outlier. This degree is called the local outlier factor (LOF) of an object. It is local in that the degree depends on how isolated the object is with respect to the surrounding neighborhood. We give a detailed formal analysis showing that LOF enjoys many desirable properties. Using real- world datasets, we demonstrate that LOF can be used to find outliers which appear to be meaningful, but can otherwise not be identified with existing approaches. Finally, a careful performance evaluation of our algorithm confirms we show that our approach of finding lo- cal outliers can be practical.}
+      \field{isbn}{1581132182}
+      \field{issn}{01635808}
+      \field{journaltitle}{Proceedings of the 2000 Acm Sigmod International Conference on Management of Data}
+      \field{title}{{LOF: Identifying Density-Based Local Outliers}}
+      \field{year}{2000}
+      \field{pages}{1\bibrangedash 12}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/335191.335388
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Breunig et al. - 2000 - LOF Identifying Density-Based Local Outliers.pdf:pdf
+      \endverb
+      \keyw{database mining,outlier detection}
+    \endentry
+    \entry{Breiman1996}{article}{}
+      \name{author}{1}{}{%
+        {{hash=132b7100417675d55d5d4d8b244f7a34}{%
+           family={Breiman},
+           familyi={B\bibinitperiod},
+           given={Leo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers-Plenum Publishers}%
+      }
+      \strng{namehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authornamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorfullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \field{labelalpha}{Bre96}
+      \field{sortinit}{B}
+      \field{sortinithash}{5f6fa000f686ee5b41be67ba6ff7962d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Bagging predictors is a method for generating multiple versions of a predictor and using these to get an aggregated predictor. The aggregation averages over the versions when predicting a numerical outcome and does a plurality vote when predicting a class. The multiple versions are formed by making bootstrap replicates of the learning set and using these as new learning sets. Tests on real and simulated data sets using classification and regression trees and subset selection in linear regression show that bagging can give substantial gains in accuracy. The vital element is the instability of the prediction method. If perturbing the learning set can cause significant changes in the predictor constructed, then bagging can improve accuracy.}
+      \field{issn}{1573-0565}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{2}
+      \field{title}{{Bagging {\{}Predictors{\}}}}
+      \field{volume}{24}
+      \field{year}{1996}
+      \field{pages}{123\bibrangedash 140}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1023/A:1018054314350
+      \endverb
+      \verb{file}
+      \verb ::
+      \endverb
+    \endentry
+    \entry{Dietterich1990}{article}{}
+      \name{author}{1}{}{%
+        {{hash=fe34adf286d2532dd088a01bb3451ec5}{%
+           family={Dietterich},
+           familyi={D\bibinitperiod},
+           given={Thomas\bibnamedelima G},
+           giveni={T\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe34adf286d2532dd088a01bb3451ec5}
+      \strng{fullhash}{fe34adf286d2532dd088a01bb3451ec5}
+      \strng{authornamehash}{fe34adf286d2532dd088a01bb3451ec5}
+      \strng{authorfullhash}{fe34adf286d2532dd088a01bb3451ec5}
+      \field{labelalpha}{Die90}
+      \field{sortinit}{D}
+      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ensemble methods are learning algorithms that construct a set of classifiers and then classify new data points by taking a (weighted) vote of their predictions. The original ensemble method is Bayesian averaging, but more recent algorithms include error-correcting output coding, Bagging, and boosting. This paper reviews these methods and explains why ensembles can often perform better than any single classifier. Some previous studies comparing ensemble methods are reviewed, and some new experiments are presented to uncover the reasons that Adaboost does not overfit rapidly.}
+      \field{journaltitle}{First International Workshop on Multiple Classifier Systems}
+      \field{title}{{Ensemble Methods in Machine Learning}}
+      \field{volume}{1857}
+      \field{year}{1990}
+      \field{pages}{1\bibrangedash 15}
+      \range{pages}{15}
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Dietterich - 1990 - Ensemble Methods in Machine Learning.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Ester:1996:DAD:3001460.3001507}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=2c062e64ed26aacc08a62155e7944f04}{%
+           family={Ester},
+           familyi={E\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9559fe65ed2c0877cf14a66fe1f8e9b3}{%
+           family={Kriegel},
+           familyi={K\bibinitperiod},
+           given={Hans-Peter},
+           giveni={H\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=802157026f850823b2027c2100cb359a}{%
+           family={Sander},
+           familyi={S\bibinitperiod},
+           given={Jörg},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2dda16c0a5d50fc830d0d4a3787937fa}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Xiaowei},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AAAI Press}%
+      }
+      \strng{namehash}{9158a41d23cb4e154e78366d59c05728}
+      \strng{fullhash}{3270dfaa31e8210b3bd04b1bcf4a29a3}
+      \strng{authornamehash}{9158a41d23cb4e154e78366d59c05728}
+      \strng{authorfullhash}{3270dfaa31e8210b3bd04b1bcf4a29a3}
+      \field{labelalpha}{EKSX96}
+      \field{sortinit}{E}
+      \field{sortinithash}{07bbd5a529b5beaa311df5be05b874bc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Second International Conference on Knowledge Discovery and Data Mining}
+      \field{series}{KDD'96}
+      \field{title}{{A Density-based Algorithm for Discovering Clusters a Density-based Algorithm for Discovering Clusters in Large Spatial Databases with Noise}}
+      \field{year}{1996}
+      \field{pages}{226\bibrangedash 231}
+      \range{pages}{6}
+      \keyw{arbitrary shape of clusters,clustering algorithms,efficiency on large spatial databases,handling nlj4-275oise}
+    \endentry
+    \entry{freund1995desicion}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=9dae54fc70ef3090ef42046937183be2}{%
+           family={Freund},
+           familyi={F\bibinitperiod},
+           given={Yoav},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=8428d6ce4d2319a5be839da6c9ae0128}{%
+           family={Schapire},
+           familyi={S\bibinitperiod},
+           given={Robert\bibnamedelima E},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{84c6ce5fcee6ba7b7dedfc3ac789155c}
+      \strng{fullhash}{84c6ce5fcee6ba7b7dedfc3ac789155c}
+      \strng{authornamehash}{84c6ce5fcee6ba7b7dedfc3ac789155c}
+      \strng{authorfullhash}{84c6ce5fcee6ba7b7dedfc3ac789155c}
+      \field{labelalpha}{FS95}
+      \field{sortinit}{F}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{European conference on computational learning theory}
+      \field{title}{{A desicion-theoretic generalization of on-line learning and an application to boosting}}
+      \field{year}{1995}
+      \field{pages}{23\bibrangedash 37}
+      \range{pages}{15}
+    \endentry
+    \entry{Hawkins}{article}{}
+      \name{author}{4}{}{%
+        {{hash=05a873b337f2c6603299a4eab9c72bce}{%
+           family={Hawkins},
+           familyi={H\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=15e9c8dda60da7d08d0f3342c0639266}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Hongxing},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ff8264eedbccec0e13a81fba31f0ff02}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Graham},
+           giveni={G\bibinitperiod}}}%
+        {{hash=03805d4cbccb02bd70c30b500b7ddfe5}{%
+           family={Baxter},
+           familyi={B\bibinitperiod},
+           given={Rohan},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{3c1ecc35e3ea35eabd51758e0fbca767}
+      \strng{fullhash}{64df688eb06b2fe59af415630b7c4dfa}
+      \strng{authornamehash}{3c1ecc35e3ea35eabd51758e0fbca767}
+      \strng{authorfullhash}{64df688eb06b2fe59af415630b7c4dfa}
+      \field{labelalpha}{HHWB}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We consider the problem of finding outliers in large multi-variate databases. Outlier detection can be applied during the data cleans-ing process of data mining to identify problems with the data itself, and to fraud detection where groups of outliers are often of particular inter-est. We use replicator neural networks (RNNs) to provide a measure of the outlyingness of data records. The performance of the RNNs is as-sessed using a ranked score measure. The effectiveness of the RNNs for outlier detection is demonstrated on two publicly available databases.}
+      \field{title}{{Outlier Detection Using Replicator Neural Networks}}
+      \verb{file}
+      \verb ::
+      \endverb
+    \endentry
+    \entry{Hautamaki2004}{article}{}
+      \name{author}{3}{}{%
+        {{hash=aeb86e1bc53e39c3ce47754cf68b82ec}{%
+           family={Hautamäki},
+           familyi={H\bibinitperiod},
+           given={Ville},
+           giveni={V\bibinitperiod}}}%
+        {{hash=6d41e53f1403a974ade7a7ad815563bc}{%
+           family={Kärkkäinen},
+           familyi={K\bibinitperiod},
+           given={Ismo},
+           giveni={I\bibinitperiod}}}%
+        {{hash=614bb1650747649217741abb174af339}{%
+           family={Fränti},
+           familyi={F\bibinitperiod},
+           given={Pasi},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE Computer Society}%
+      }
+      \strng{namehash}{90eae78c332e1e8f474da89cd1fb4b8d}
+      \strng{fullhash}{70f69dcadba4b543d3a16b322dd2a4c8}
+      \strng{authornamehash}{90eae78c332e1e8f474da89cd1fb4b8d}
+      \strng{authorfullhash}{70f69dcadba4b543d3a16b322dd2a4c8}
+      \field{labelalpha}{HKF04}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present an Outlier Detection using Indegree Number (ODIN) algorithm that utilizes k-nearest neighbour graph. Improvements to existing kNN distance -based method are also proposed. We compare the methods with real and syn-thetic datasets. The results show that the proposed method achieves resonable results with synthetic data and outper-forms compared methods with real data sets with small number of observations.}
+      \field{isbn}{0-7695-2128-2}
+      \field{journaltitle}{Proceedings of the Pattern Recognition, 17th International Conference on (ICPR'04) Volume 3 - Volume 03}
+      \field{title}{{Outlier Detection Using k-Nearest Neighbour Graph}}
+      \field{year}{2004}
+      \field{pages}{430\bibrangedash 433}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/ICPR.2004.671
+      \endverb
+    \endentry
+    \entry{hansen1990neural}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ed831734bce0faca05b77009ee2102fd}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Lars\bibnamedelima Kai},
+           giveni={L\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=96b82dd7a74330735a89c5392d2ba0d8}{%
+           family={Salamon},
+           familyi={S\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1c04b0e9f3cf9b6b48ef6082acb53c01}
+      \strng{fullhash}{1c04b0e9f3cf9b6b48ef6082acb53c01}
+      \strng{authornamehash}{1c04b0e9f3cf9b6b48ef6082acb53c01}
+      \strng{authorfullhash}{1c04b0e9f3cf9b6b48ef6082acb53c01}
+      \field{labelalpha}{HS90}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE transactions on pattern analysis and machine intelligence}
+      \field{number}{10}
+      \field{title}{{Neural network ensembles}}
+      \field{volume}{12}
+      \field{year}{1990}
+      \field{pages}{993\bibrangedash 1001}
+      \range{pages}{9}
+    \endentry
+    \entry{He:2003:DCL:770340.770389}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3fae0c074dae2c0a89087560542dafd1}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Zengyou},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=51ce47cb9f6e5f13a9b47be9ef732dfa}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Xiaofei},
+           giveni={X\bibinitperiod}}}%
+        {{hash=bc1b6ee75aef1d0c6e3e0f043598a62a}{%
+           family={Deng},
+           familyi={D\bibinitperiod},
+           given={Shengchun},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Science Inc.}%
+      }
+      \strng{namehash}{57cb695ba24763d0d8af6d42a8061612}
+      \strng{fullhash}{b34e7d3a4ee371fa93e91dbe7fe68cb6}
+      \strng{authornamehash}{57cb695ba24763d0d8af6d42a8061612}
+      \strng{authorfullhash}{b34e7d3a4ee371fa93e91dbe7fe68cb6}
+      \field{labelalpha}{HXD03}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0167-8655}
+      \field{journaltitle}{Pattern Recogn. Lett.}
+      \field{number}{9-10}
+      \field{title}{{Discovering Cluster-based Local Outliers}}
+      \field{volume}{24}
+      \field{year}{2003}
+      \field{pages}{1641\bibrangedash 1650}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1016/S0167-8655(03)00003-5
+      \endverb
+      \keyw{clustering,data mining,outlier detection}
+    \endentry
+    \entry{Kaggle}{online}{}
+      \name{author}{1}{}{%
+        {{hash=45e46928e6fb28dd1d269218bee1ab0a}{%
+           family={Inc},
+           familyi={I\bibinitperiod},
+           given={Kaggle},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{45e46928e6fb28dd1d269218bee1ab0a}
+      \strng{fullhash}{45e46928e6fb28dd1d269218bee1ab0a}
+      \strng{authornamehash}{45e46928e6fb28dd1d269218bee1ab0a}
+      \strng{authorfullhash}{45e46928e6fb28dd1d269218bee1ab0a}
+      \field{labelalpha}{Inc17}
+      \field{sortinit}{I}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Kaggle: Your Home for Data Science}
+      \field{urlday}{11}
+      \field{urlmonth}{2}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://www.kaggle.com/
+      \endverb
+    \endentry
+    \entry{Jolliffe2002}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ffb362e264c285d0a44d07356e4e4a37}{%
+           family={Jolliffe},
+           familyi={J\bibinitperiod},
+           given={I\bibnamedelima T},
+           giveni={I\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{ffb362e264c285d0a44d07356e4e4a37}
+      \strng{fullhash}{ffb362e264c285d0a44d07356e4e4a37}
+      \strng{authornamehash}{ffb362e264c285d0a44d07356e4e4a37}
+      \strng{authorfullhash}{ffb362e264c285d0a44d07356e4e4a37}
+      \field{labelalpha}{Jol02}
+      \field{sortinit}{J}
+      \field{sortinithash}{c86bd6cced82a15683b396c2169909ef}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Principal component analysis is central to the study of multivariate data. Although one of the earliest multivariate techniques it continues to be the subject of much research, ranging from new model- based approaches to algorithmic ideas from neural networks. It is extremely versatile with applications in many disciplines. The first edition of this book was the first comprehensive text written solely on principal component analysis. The second edition updates and substantially expands the original version, and is once again the definitive text on the subject. It includes core material, current research and a wide range of applications. Its length is nearly double that of the first edition. Researchers in statistics, or in other fields that use principal component analysis, will find that the book gives an authoritative yet accessible account of the subject. It is also a valuable resource for graduate courses in multivariate analysis. The book requires some knowledge of matrix algebra. Ian Jolliffe is Professor of Statistics at the University of Aberdeen. He is author or co-author of over 60 research papers and three other books. His research interests are broad, but aspects of principal component analysis have fascinated him and kept him busy for over 30 years.}
+      \field{isbn}{0-387-95442-2}
+      \field{issn}{15364844}
+      \field{journaltitle}{Springer Series in Statistics}
+      \field{series}{Springer Series in Statistics}
+      \field{title}{{Principal Component Analysis, Second Edition}}
+      \field{volume}{98}
+      \field{year}{2002}
+      \field{pages}{487}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/b98835
+      \endverb
+    \endentry
+    \entry{Kandhari2009}{article}{}
+      \name{author}{5}{}{%
+        {{hash=80d05e14fcf81ade006e2f0fffbec4ce}{%
+           family={Kandhari},
+           familyi={K\bibinitperiod},
+           given={Rupali},
+           giveni={R\bibinitperiod}}}%
+        {{hash=818074037ed2f89ce51237af38dec11f}{%
+           family={Chandola},
+           familyi={C\bibinitperiod},
+           given={Varun},
+           giveni={V\bibinitperiod}}}%
+        {{hash=4ddb7b9c38d8c15a70bc573ba4e51ea9}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Arindam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=efb90d78e35ff61d3bc639f5c6f3d822}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Vipin},
+           giveni={V\bibinitperiod}}}%
+        {{hash=80d05e14fcf81ade006e2f0fffbec4ce}{%
+           family={Kandhari},
+           familyi={K\bibinitperiod},
+           given={Rupali},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{04f46d1e2c1333d32029981db14e2aee}
+      \strng{fullhash}{4245c7367fcea3b56c3b14fbb7c64d4e}
+      \strng{authornamehash}{04f46d1e2c1333d32029981db14e2aee}
+      \strng{authorfullhash}{4245c7367fcea3b56c3b14fbb7c64d4e}
+      \field{labelalpha}{KCBKK09}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Anomaly detection is an important problem that has been researched within diverse research areas and application domains.Many anomaly detection techniques have been specifically developed for certain appli- cation domains, while others are more generic. This survey tries to provide a structured and comprehensive overview of the research on anomaly detection.We have grouped existing techniques into different categories based on the underlying approach adopted by each technique. For each category we have identified key as- sumptions, which are used by the techniques to differentiate between normal and anomalous behavior.When applying a given technique to a particular domain, these assumptions can be used as guidelines to assess the effectiveness of the technique in that domain. For each category, we provide a basic anomaly detection technique, and then show how the different existing techniques in that category are variants of the basic technique. This template provides an easier and more succinct understanding of the techniques belonging to each category. Further, for each category, we identify the advantages and disadvantages of the techniques in that category.We also provide a discussion on the computational complexity of the techniques since it is an important issue in real application domains. We hope that this survey will provide a better understanding of the different directions in which research has been done on this topic, and how techniques developed in one area can be applied in domains for which they were not intended to begin with}
+      \field{isbn}{0818663359}
+      \field{issn}{03600300}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{number}{3}
+      \field{title}{{Anomaly detection}}
+      \field{volume}{41}
+      \field{year}{2009}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/1541880.1541882
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Kandhari et al. - 2009 - Anomaly detection.pdf:pdf
+      \endverb
+      \keyw{Anomaly detection,outlier detection}
+    \endentry
+    \entry{Kohonen:1997:SM:261082}{book}{}
+      \name{editor}{1}{}{%
+        {{hash=a239233dfb1d78ba7f02fe9e49b13503}{%
+           family={Kohonen},
+           familyi={K\bibinitperiod},
+           given={Teuvo},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Secaucus, NJ, USA}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag New York, Inc.}%
+      }
+      \strng{namehash}{a239233dfb1d78ba7f02fe9e49b13503}
+      \strng{fullhash}{a239233dfb1d78ba7f02fe9e49b13503}
+      \strng{editornamehash}{a239233dfb1d78ba7f02fe9e49b13503}
+      \strng{editorfullhash}{a239233dfb1d78ba7f02fe9e49b13503}
+      \field{labelalpha}{Koh97}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{isbn}{3-540-62017-6}
+      \field{title}{{Self-organizing Maps}}
+      \field{year}{1997}
+    \endentry
+    \entry{Langone2015}{article}{}
+      \name{author}{6}{}{%
+        {{hash=3e01c4e3d2eea9dced6464c74b99cc9d}{%
+           family={Langone},
+           familyi={L\bibinitperiod},
+           given={Rocco},
+           giveni={R\bibinitperiod}}}%
+        {{hash=25c7ff9478209b6f0ad8e9d57792ee28}{%
+           family={Alzate},
+           familyi={A\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f3cf22f4d8fffd36f53403723344b900}{%
+           family={{De Ketelaere}},
+           familyi={D\bibinitperiod},
+           given={Bart},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5589e72b0f5d8dec37e4e3a30e674d4e}{%
+           family={Vlasselaer},
+           familyi={V\bibinitperiod},
+           given={Jonas},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f0cd8734a5ce8b6c9638f64123414609}{%
+           family={Meert},
+           familyi={M\bibinitperiod},
+           given={Wannes},
+           giveni={W\bibinitperiod}}}%
+        {{hash=c730aae00535af4192c17c10a45d1c68}{%
+           family={Suykens},
+           familyi={S\bibinitperiod},
+           given={Johan\bibnamedelimb A\bibnamedelima K},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7cb28ac5be4d9e7796563bcc707471c8}
+      \strng{fullhash}{f6bb66552ee0595bdaada8d59da20207}
+      \strng{authornamehash}{7cb28ac5be4d9e7796563bcc707471c8}
+      \strng{authorfullhash}{f6bb66552ee0595bdaada8d59da20207}
+      \field{labelalpha}{LADVMS15}
+      \field{sortinit}{L}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Accurate prediction of forthcoming faults in modern industrial machines plays a key role in reducing production arrest, increasing the safety of plant operations, and optimizing manufacturing costs. The most effective condition monitoring techniques are based on the analysis of historical process data. In this paper we show how Least Squares Support Vector Machines (LS-SVMs) can be used effectively for early fault detection in an online fashion. Although LS-SVMs are existing artificial intelligence methods, in this paper the novelty is represented by their successful application to a complex industrial use case, where other approaches are commonly used in practice. In particular, in the first part we present an unsupervised approach that uses Kernel Spectral Clustering (KSC) on the sensor data coming from a vertical form seal and fill (VFFS) machine, in order to distinguish between normal operating condition and abnormal situations. Basically, we describe how KSC is able to detect in advance the need of maintenance actions in the analysed machine, due the degradation of the sealing jaws. In the second part we illustrate a nonlinear auto-regressive (NAR) model, thus a supervised learning technique, in the LS-SVM framework. We show that we succeed in modelling appropriately the degradation process affecting the machine, and we are capable to accurately predict the evolution of dirt accumulation in the sealing jaws.}
+      \field{issn}{09521976}
+      \field{journaltitle}{Engineering Applications of Artificial Intelligence}
+      \field{title}{{LS-SVM based spectral clustering and regression for predicting maintenance of industrial machines}}
+      \field{volume}{37}
+      \field{year}{2015}
+      \field{pages}{268\bibrangedash 278}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1016/j.engappai.2014.09.008
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/Downloads/Langone{\_}maintenanceMachines.pdf:pdf
+      \endverb
+      \keyw{Artificial intelligence,Fault detection,Kernel spectral clustering,LS-SVMs,Machine degradation,Time-series prediction}
+    \endentry
+    \entry{lasi2014industry}{article}{}
+      \name{author}{5}{}{%
+        {{hash=bbbfc2e139b4fbf801d5d4ea03048311}{%
+           family={Lasi},
+           familyi={L\bibinitperiod},
+           given={Heiner},
+           giveni={H\bibinitperiod}}}%
+        {{hash=f88eb676c206753b0989fa3776b5a10c}{%
+           family={Fettke},
+           familyi={F\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0aeb854e1980e96131ad11d6c7e59b76}{%
+           family={Kemper},
+           familyi={K\bibinitperiod},
+           given={Hans-Georg},
+           giveni={H\bibinithyphendelim G\bibinitperiod}}}%
+        {{hash=d641a10adbc6d2e6bc6817d3af3ae40f}{%
+           family={Feld},
+           familyi={F\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4539d354ecc875071164ba52f1c44812}{%
+           family={Hoffmann},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science {\&} Business Media}%
+      }
+      \strng{namehash}{db60fe2123f7df597a9f6b51093060c2}
+      \strng{fullhash}{19799c67d0dbf629073f2f2d2d5fd4c0}
+      \strng{authornamehash}{db60fe2123f7df597a9f6b51093060c2}
+      \strng{authorfullhash}{19799c67d0dbf629073f2f2d2d5fd4c0}
+      \field{labelalpha}{LFKFH14}
+      \field{sortinit}{L}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Business {\&} Information Systems Engineering}
+      \field{number}{4}
+      \field{title}{{Industry 4.0}}
+      \field{volume}{6}
+      \field{year}{2014}
+      \field{pages}{239}
+      \range{pages}{1}
+    \endentry
+    \entry{laurikkala2000informal}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=920569cfd751f8fa07b4a0257aa16700}{%
+           family={Laurikkala},
+           familyi={L\bibinitperiod},
+           given={Jorma},
+           giveni={J\bibinitperiod}}}%
+        {{hash=adf14b0cd4abbfa95ef906d71b4ae7cf}{%
+           family={Juhola},
+           familyi={J\bibinitperiod},
+           given={Martti},
+           giveni={M\bibinitperiod}}}%
+        {{hash=172eefc1eb1c7091f88745a54f728882}{%
+           family={Kentala},
+           familyi={K\bibinitperiod},
+           given={Erna},
+           giveni={E\bibinitperiod}}}%
+        {{hash=d8abf74648671d34c56354f28a8446ee}{%
+           family={Lavrac},
+           familyi={L\bibinitperiod},
+           given={N},
+           giveni={N\bibinitperiod}}}%
+        {{hash=f202b2b44af90f8d9c8b80bf7d995dd7}{%
+           family={Miksch},
+           familyi={M\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6dc4f1120b31251f6cc4b756fa46d664}{%
+           family={Kavsek},
+           familyi={K\bibinitperiod},
+           given={B},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{d2dacba4741dbc6edae73f61093b85cc}
+      \strng{fullhash}{2ff4d09d894f5a09002a6b52a943bd80}
+      \strng{authornamehash}{d2dacba4741dbc6edae73f61093b85cc}
+      \strng{authorfullhash}{2ff4d09d894f5a09002a6b52a943bd80}
+      \field{labelalpha}{LJKLMK00}
+      \field{sortinit}{L}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Fifth International Workshop on Intelligent Data Analysis in Medicine and Pharmacology}
+      \field{title}{{Informal identification of outliers in medical data}}
+      \field{volume}{1}
+      \field{year}{2000}
+      \field{pages}{20\bibrangedash 24}
+      \range{pages}{5}
+    \endentry
+    \entry{leroy1987robust}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6ebaf9c9a56460957016998fd3a7589d}{%
+           family={Leroy},
+           familyi={L\bibinitperiod},
+           given={Annick\bibnamedelima M},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d08305d0cbeebf027810103d8d8b331c}{%
+           family={Rousseeuw},
+           familyi={R\bibinitperiod},
+           given={Peter\bibnamedelima J},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{1ff6a2f3cb1ec41fce2082facd48b4d5}
+      \strng{fullhash}{1ff6a2f3cb1ec41fce2082facd48b4d5}
+      \strng{authornamehash}{1ff6a2f3cb1ec41fce2082facd48b4d5}
+      \strng{authorfullhash}{1ff6a2f3cb1ec41fce2082facd48b4d5}
+      \field{labelalpha}{LR87}
+      \field{sortinit}{L}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Wiley Series in Probability and Mathematical Statistics, New York: Wiley, 1987}
+      \field{title}{{Robust regression and outlier detection}}
+      \field{year}{1987}
+    \endentry
+    \entry{UCI}{online}{}
+      \name{author}{2}{}{%
+        {{hash=1d01c93dcabc1791e7e6f3612b09212b}{%
+           family={Machine\bibnamedelima Learning},
+           familyi={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           given={Center},
+           giveni={C\bibinitperiod},
+           prefix={for},
+           prefixi={f\bibinitperiod}}}%
+        {{hash=b9da82e2fde6d764546aac816e1e5f45}{%
+           family={Systems},
+           familyi={S\bibinitperiod},
+           given={Intelligent},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{39fcba96b79688e102dbcfae99b72c0d}
+      \strng{fullhash}{39fcba96b79688e102dbcfae99b72c0d}
+      \strng{authornamehash}{39fcba96b79688e102dbcfae99b72c0d}
+      \strng{authorfullhash}{39fcba96b79688e102dbcfae99b72c0d}
+      \field{labelalpha}{MS17}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UCI Machine Learning Repository}
+      \field{urlday}{11}
+      \field{urlmonth}{2}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://archive.ics.uci.edu/ml/
+      \endverb
+    \endentry
+    \entry{Mendes-Moreira2012}{book}{}
+      \name{author}{4}{}{%
+        {{hash=bdbb2d893b4a2fd7aef335749a6a8ed2}{%
+           family={Mendes-Moreira},
+           familyi={M\bibinithyphendelim M\bibinitperiod},
+           given={João},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ea13669b47d552fbc7d7438f9dc08c5c}{%
+           family={Soares},
+           familyi={S\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+        {{hash=378adaa7f99c7f8be78b960c456853a8}{%
+           family={Jorge},
+           familyi={J\bibinitperiod},
+           given={Alípio\bibnamedelima Mário},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2b768eee70d7c31c0dcf99251040807a}{%
+           family={Sousa},
+           familyi={S\bibinitperiod},
+           given={Jorge\bibnamedelimb Freire\bibnamedelima De},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{d9725f786ea91a5d4c709c3f517175f8}
+      \strng{fullhash}{e00de2ee8c58bff15af254ab4b4261e3}
+      \strng{authornamehash}{d9725f786ea91a5d4c709c3f517175f8}
+      \strng{authorfullhash}{e00de2ee8c58bff15af254ab4b4261e3}
+      \field{labelalpha}{MSJS12}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The goal of ensemble regression is to combine several models in order to improve the prediction accuracy in learning problems with a numerical target variable. The process of ensemble learning can be divided into three phases: the generation phase, the pruning phase, and the integration phase.We discuss different approaches to each of these phases that are able to deal with the regression problem, categorizing them in terms of their relevant characteristics and linking them to contributions from different fields. Furthermore, this work makes it possible to identify interesting areas for future research.}
+      \field{booktitle}{ACM Computing Surveys}
+      \field{isbn}{3512250815}
+      \field{issn}{03600300}
+      \field{number}{1}
+      \field{title}{{Ensemble approaches for regression}}
+      \field{volume}{45}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 40}
+      \range{pages}{40}
+      \verb{doi}
+      \verb 10.1145/2379776.2379786
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/Downloads/617785024ebe90481532b19cb3fd859a97d6.pdf:pdf
+      \endverb
+      \keyw{ensembles,regression,supervised learning}
+    \endentry
+    \entry{PapadimitriouS.KitagawaH.2003}{article}{}
+      \name{author}{3}{}{%
+        {{hash=558c747649134617ecfa61dc35aa88a8}{%
+           family={{Papadimitriou, Spiros Kitagawa}},
+           familyi={P\bibinitperiod},
+           given={Hiroyuki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8701e6f808601b2b5cd5fdbcea180016}{%
+           family={Gibbons},
+           familyi={G\bibinitperiod},
+           given={Phillip\bibnamedelima B},
+           giveni={P\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=976e034dd29cfc47640ae45c16d21a9d}{%
+           family={Faloutsos},
+           familyi={F\bibinitperiod},
+           given={Christos},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{f22ba35111120b83cb859d1123901c47}
+      \strng{fullhash}{8f00e6c1b737c312be7673dd05983c38}
+      \strng{authornamehash}{f22ba35111120b83cb859d1123901c47}
+      \strng{authorfullhash}{8f00e6c1b737c312be7673dd05983c38}
+      \field{labelalpha}{PGF03}
+      \field{sortinit}{P}
+      \field{sortinithash}{24100cef455d7974167575052c29146e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Outlier detection is an integral part of data mining and has attracted much attention recently [8, 15, 19]. In this paper, we propose a new method for evaluating outlier-ness, which we call the Local Correlation Integral (LOCI). As with the best previous methods, LOCI is highly effective for detecting outliers and groups of outliers (a.k.a. micro-clusters). In addition, it offers the following advantages and novelties: (a) It provides an automatic, data-dictated cut-off to determine whether a point is an outlier—in contrast, previous methods force users to pick cut-offs, without any hints as to what cut-off value is best for a given dataset. (b) It can provide a LOCI plot for each point; this plot summarizes a wealth of information about the data in the vicinity of the point, determining clusters, micro-clusters, their diameters and their inter-cluster distances. None of the existing outlier-detection methods can match this fea-ture, because they output only a single number for each point: its outlier-ness score. (c) Our LOCI method can be computed as quickly as the best previous methods. (d) Moreover, LOCI leads to a practically linear approximate method, aLOCI (for approximate LOCI), which provides fast highly-accurate outlier detection. To the best of our knowledge, this is the first work to use approximate compu-tations to speed up outlier detection. Experiments on synthetic and real world data sets show that LOCI and aLOCI can automatically detect outliers and micro-clusters, without user-required cut-offs, and that they quickly spot both expected and unexpected outliers.}
+      \field{journaltitle}{Proceedings of the ICDE03}
+      \field{title}{{LOCI: Fast outlier detection using the local correlation integal}}
+      \field{year}{2003}
+      \verb{file}
+      \verb ::
+      \endverb
+      \keyw{box counting,correlation integral,outlier}
+    \endentry
+    \entry{Sc}{article}{}
+      \name{author}{6}{}{%
+        {{hash=b4fcc082a0a1c352d5e3199b778a86a1}{%
+           family={Sc},
+           familyi={S\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=f8bbfb70aa80f7cabfa2fb7d91cb7dbb}{%
+           family={Platt},
+           familyi={P\bibinitperiod},
+           given={John\bibnamedelima C},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=8feae4ec394a5f6905c74b1a7abff875}{%
+           family={Shawe-Taylor},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3cc08cdfb2250c664e276f26aea7fb20}{%
+           family={Holloway},
+           familyi={H\bibinitperiod},
+           given={Royal},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d958fd72cbc7963e7ed0e0fc2f97f282}{%
+           family={Smola},
+           familyi={S\bibinitperiod},
+           given={Alex\bibnamedelima J},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=6b6f1c06e538e70f2408631d1f60e9fb}{%
+           family={Williamson},
+           familyi={W\bibinitperiod},
+           given={Robert\bibnamedelima C},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{5853a03b33e2cf2d73999ae902d25d1a}
+      \strng{fullhash}{b82fc633bc6ee61def2436ab15c76323}
+      \strng{authornamehash}{5853a03b33e2cf2d73999ae902d25d1a}
+      \strng{authorfullhash}{b82fc633bc6ee61def2436ab15c76323}
+      \field{labelalpha}{SPSHSW}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Suppose you are given some data set drawn from an underlying probabil-ity distribution P and you want to estimate a " simple " subset S of input space such that the probability that a test point drawn from P lies outside of S equals some a priori speci value between 0 and 1. We propose a method to approach this problem by trying to estimate a function f that is positive on S and negative on the complement. The func-tional form of f is given by a kernel expansion in terms of a potentially small subset of the training data;it is regularized by controlling the length of the weight vector in an associated feature space. The expansion coef cients are found by solving a quadratic programming problem, which we do by carrying out sequential optimization over pairs of input patterns. We also provide a theoretical analysis of the statistical performance of our algorithm. The algorithm is a natural extension of the support vector algorithm to the case of unlabeled data.}
+      \field{title}{{Estimating the Support of a High-Dimensional Distribution}}
+      \verb{file}
+      \verb ::
+      \endverb
+    \endentry
+    \entry{Tang2002}{article}{}
+      \name{author}{4}{}{%
+        {{hash=541194db9dac70af45a28c067d289c8d}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3a4489a126b6411113da260a3577ab7d}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Zhixiang},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=999d3ce4e946eff665cf2f2faad3856f}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Ada\bibnamedelima Wai-chee},
+           giveni={A\bibinitperiod\bibinitdelim W\bibinithyphendelim c\bibinitperiod}}}%
+        {{hash=0c09d92721e182d316452d4ad3e02311}{%
+           family={Cheung},
+           familyi={C\bibinitperiod},
+           given={David\bibnamedelima W.},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{46894c9a61813f6e656d9217e281e7d1}
+      \strng{fullhash}{36c600edff1769ddb5fdaa58a8f634d6}
+      \strng{authornamehash}{46894c9a61813f6e656d9217e281e7d1}
+      \strng{authorfullhash}{36c600edff1769ddb5fdaa58a8f634d6}
+      \field{labelalpha}{TCFC02}
+      \field{sortinit}{T}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Outlier detection is concerned with discovering exceptional behaviors of objects in data sets.It is becoming a growingly useful tool in applications such as credit card fraud detection, discovering criminal behaviors in e-commerce, identifying computer intrusion, detecting health problems, etc.In this paper, we introduce a connectivity-based outlier factor (COF) scheme that improves the effectiveness of an existing local outlier factor (LOF) scheme when a pattern itself has similar neighbourhood density as an outlier.We give theoretical and empirical analysis to demonstrate the improvement in effectiveness and the capability of the COF scheme in comparison with the LOF scheme.}
+      \field{isbn}{3-540-43704-5}
+      \field{issn}{16113349}
+      \field{journaltitle}{Advances in Knowledge Discovery and Data Mining}
+      \field{title}{{Enhancing effectiveness of outlier detections for low density patterns}}
+      \field{volume}{2336}
+      \field{year}{2002}
+      \field{pages}{535\bibrangedash 548}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1007/3-540-47887-6
+      \endverb
+      \verb{file}
+      \verb ::
+      \endverb
+    \endentry
+    \entry{Tan2005}{article}{}
+      \name{author}{3}{}{%
+        {{hash=86a8d7a88b3690035ad60e47af41a2af}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Pang-Ning},
+           giveni={P\bibinithyphendelim N\bibinitperiod}}}%
+        {{hash=b9765658c356344d0b65e62185a7fbda}{%
+           family={Steinbach},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=efb90d78e35ff61d3bc639f5c6f3d822}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Vipin},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{dd5179c15cc97e6dd47cd751a9153881}
+      \strng{fullhash}{c6671104b89c6a346045bc95dabb5434}
+      \strng{authornamehash}{dd5179c15cc97e6dd47cd751a9153881}
+      \strng{authorfullhash}{c6671104b89c6a346045bc95dabb5434}
+      \field{labelalpha}{TSK05}
+      \field{sortinit}{T}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Cluster analysis divides data into groups (clusters) that aremeaningful, useful, or both. If meaningful groups are the goal, then the clusters should capture the natural structure of the data. In some cases, however, cluster analysis is only a useful starting point for other purposes, such as data summarization. Whether for understanding or utility, cluster analysis has long played an important role in a wide variety of fields: psychology and other social sciences, biology, statistics, pattern recognition, information retrieval, machine learning, and data mining. There have been many applications of cluster analysis to practical prob- lems. We provide some specific examples, organized by whether the purpose of the clustering is understanding or utility.}
+      \field{isbn}{0321321367}
+      \field{issn}{00224405}
+      \field{journaltitle}{Introduction to Data Mining}
+      \field{title}{{Chap 8 : Cluster Analysis: Basic Concepts and Algorithms}}
+      \field{year}{2005}
+      \field{pages}{Chapter 8}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1016/0022-4405(81)90007-8
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/Downloads/ch8.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Zimek2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cbfafee6627ecbb346007c41a5787a4e}{%
+           family={Zimek},
+           familyi={Z\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0d96fce3c8e89e5bf2cf9b5a030e27b5}{%
+           family={Campello},
+           familyi={C\bibinitperiod},
+           given={Ricardo\bibnamedelimb J\bibnamedelimb G\bibnamedelima B},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=802157026f850823b2027c2100cb359a}{%
+           family={Sander},
+           familyi={S\bibinitperiod},
+           given={Jörg},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{e8952381a9e9309213191db9cfdd9a38}
+      \strng{fullhash}{c579818d9f9c9eb60cf6fb50f240330e}
+      \strng{authornamehash}{e8952381a9e9309213191db9cfdd9a38}
+      \strng{authorfullhash}{c579818d9f9c9eb60cf6fb50f240330e}
+      \field{labelalpha}{ZCS14}
+      \field{sortinit}{Z}
+      \field{sortinithash}{35589aa085e881766b72503e53fd4c97}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ensembles for unsupervised outlier detection is an emerging topic that has been neglected for a surprisingly long time (although there are reasons why this is more difficult than supervised ensembles or even clustering ensembles). Aggarwal recently discussed algorithmic patterns of outlier detection ensembles, identified traces of the idea in the literature, and remarked on potential as well as unlikely avenues for future transfer of concepts from supervised ensembles. Complementary to his points, here we focus on the core ingredients for building an outlier ensemble, discuss the first steps taken in the literature, and identify challenges for future research.}
+      \field{isbn}{1931-0145}
+      \field{issn}{19310145}
+      \field{journaltitle}{ACM SIGKDD Explorations Newsletter}
+      \field{number}{1}
+      \field{title}{{Ensembles for unsupervised outlier detection: Challenges and research questions}}
+      \field{volume}{15}
+      \field{year}{2014}
+      \field{pages}{11\bibrangedash 22}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/2594473.2594476
+      \endverb
+      \verb{file}
+      \verb :C$\backslash$:/Users/Miguel Sandim/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Zimek, Campello - Unknown - Ensembles for Unsupervised Outlier Detection Challenges and Research Questions.pdf:pdf
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

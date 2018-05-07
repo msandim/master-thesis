@@ -1,0 +1,74 @@
+\chapter{Introduction} \label{chap:intro}
+
+\section*{}
+
+Data Mining has become an important field in the modern world, given the large number of possible applications in many different domains such as marketing, medical research, computer vision, social network analysis, intrusion detection and fraud detection \cite{Aggarwal:2015:DMT:2778285}.
+This diverse range of applications is also explained by the increase in the volume of data stored (thanks to trends such as the \textit{Internet of Things} \cite{atzori2010internet} and \textit{Industry 4.0} \cite{lasi2014industry}) and their easy and wide distribution.
+%(made possible by platforms such as Kaggle \cite{Kaggle} and UCI \cite{UCI}).
+
+Anomaly Detection is a very specific but significant topic in this field, given the high number of domains in which it can be applied \cite{Kandhari2009}. In fact, the problem that motivates this field is a very common one and can be easily translated into this question: given a certain amount of data, is it possible to detect observations that deviate from the normal behavior of the data?
+This question can arise, e.g. in areas such as credit card fraud detection (where the deviant patterns can correspond to fraudulent transactions) or machine condition monitoring (in which the abnormal patterns can correspond to different vibration values of certain components belonging to an industrial machine, that might indicate a certain type of malfunction \cite{Langone2015}).
+
+\section{Motivation and Goals} \label{sec:goals} 
+
+The literature regarding Anomaly Detection techniques is very extensive and diverse, with a wide range of techniques that can have different outputs (either an \textit{anomaly score} that indicates how much of a data instance in a dataset is an \textit{anomaly}, or a label -- \textit{anomalous} or \textit{normal}), as well as different assumptions (e.g. density based techniques have different underlying assumptions than clustering based techniques).
+This heterogeneity within Anomaly Detection techniques may cause different techniques to behave differently on the same dataset, which makes the task of choosing the right technique(s) for a specific domain very difficult and data-dependent.
+
+The thesis intends to address this issue, by using several Anomaly Detection techniques at the same time and then combining their outputs into a single one.
+This is the idea behind Ensemble Learning methods, which work by generating a group of models (which is designated by \textit{ensemble}) and then combining their predictions into one.
+Ensemble Learning has proven to improve performance in machine learning applications such as classification, regression, time-series analysis and recommender systems \cite{Aggarwal:2013:OA:2436823}.
+Ensemble Learning based solutions are also known to win various data mining competitions (the most well-known being the Netflix Prize challenge for recommender systems).
+More specifically this thesis will explore a Stacked Generalization method, which consists in using an extra model that \textit{learns} the best way of combining the group of models.
+
+%\textbf{MELHORAR, Colocar definição de Ensemble Learning estilo de votação. Examples are many: the essence of democracy where a group of people vote to make a decision, whether to choose an elected official or to decide on a new law, is in fact based on ensemble-based decision making.}
+
+Therefore this thesis intends to answer the following main research question:
+
+\begin{itemize}
+	\item Can a Stacked Generalization method improve the performance of Anomaly Detection techniques, more specifically the performance of the best technique for a given dataset?
+\end{itemize}
+
+%\begin{itemize}
+%	\item Ensemble Learning guarantees better results in regular supervised-learning problems (classification and regression -- cite paper from Regression Ensembles from Prof. João).
+%	\item Anomaly/Outlier Detection is a very particular field of DM (and also very heterogenous, with several types of methods that have distinct outputs): describe the field very shortly, stating that we usually want to find ``unsual'' patterns that don't go along the normal behavior of the data: some problems can be viewed as classification problems, in which one class is very rare and distinct from the other one (the ``anomalies''.).
+%	\item It's interesting to study if the good results reported throughout the academia using Ensemble methods, apply to Anomaly Detection techniques and report the gaps in the literature in this topic, trying to improve some of them.
+%\end{itemize}
+
+%Research questions:
+%\begin{itemize}
+%	\item Can the concept of Ensemble Learning be applied to Anomaly Detection? What are the previous works in this topic?
+%	\item What are the research opportunities in this topic?
+%\end{itemize}
+
+%Apresenta a motivação e enumera os objetivos do trabalho terminando com um resumo das metodologias para a prossecução dos objetivos.
+
+% DESCOMENTAR DPS
+\section{Outline} \label{sec:outline}
+
+This document is structured as follows:
+
+\begin{itemize}
+	\item Chapter~\ref{chap:anomaly} reports the current state-of-the-art in Anomaly Detection, by presenting a definition for this field and techniques used;
+	
+	\item Chapter~\ref{chap:ensemble} describes the concepts of Ensemble Learning and Stacked Generalization along with examples of techniques and applications in the context of Anomaly Detection;
+	
+	\item Chapter~\ref{chap:meth} presents the methodology followed throughout the experimental research of this dissertation;
+	
+	\item Chapter~\ref{chap:resul} summarizes the main results and findings of the application of the experimental methodology proposed in the previous chapter;
+	
+	\item Chapter~\ref{chap:conc} closes this dissertation by summarizing the results gathered in the context of the field, the main contributions of this work and possible future work topics.
+\end{itemize}
+
+
+%Chapter \textbf{METER CAPITULO} finalizes this document with preliminary conclusions for this thesis work and planning for the future work to be carried out.
+
+%Para além da introdução, esta dissertação contém mais x capítulos.
+%No capítulo~\ref{chap:sota}, é descrito o estado da arte e são
+%apresentados trabalhos relacionados. 
+%\todoline{Complete the document structure.}
+%No capítulo~\ref{chap:chap3}, ipsum dolor sit amet, consectetuer
+%adipiscing elit.
+%No capítulo~\ref{chap:chap4} praesent sit amet sem. 
+%No capítulo~\ref{chap:concl}  posuere, ante non tristique
+%consectetuer, dui elit scelerisque augue, eu vehicula nibh nisi ac
+%est. 

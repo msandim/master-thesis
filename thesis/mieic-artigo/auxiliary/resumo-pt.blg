@@ -1,0 +1,20 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'auxiliary\resumo-pt.blg'
+[36] biber-MSWIN64:303> INFO - === 
+[69] Biber.pm:359> INFO - Reading 'auxiliary\resumo-pt.bcf'
+[177] Biber.pm:835> INFO - Found 4 citekeys in bib section 0
+[193] Biber.pm:3670> INFO - Processing section 0
+[218] Biber.pm:3840> INFO - Looking for bibtex format file 'refs.bib' for section 0
+[251] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[299] bibtex.pm:1292> INFO - Found BibTeX data source 'refs.bib'
+[348] Utils.pm:164> WARN - ISBN '1461463955, 9781461463955' in entry 'Aggarwal:2013:OA:2436823' is invalid - run biber with '--validate_datamodel' for details.
+[357] Utils.pm:164> WARN - ISBN '1061801504448' in entry 'Campos2016' is invalid - run biber with '--validate_datamodel' for details.
+[357] Utils.pm:164> WARN - month field 'jul' in entry 'Campos2016' is not an integer - this will probably not sort properly.
+[368] Utils.pm:164> WARN - BibTeX subsystem: C:\Users\MIGUEL~1\AppData\Local\Temp\W50z3ZxdF3\refs.bib_3264.utf8, line 6, warning: 173 characters of junk seen at toplevel
+[381] UCollate.pm:68> INFO - Overriding locale 'pt-PT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[381] UCollate.pm:68> INFO - Overriding locale 'pt-PT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[382] Biber.pm:3499> INFO - Sorting list 'none/global/' of type 'entry' with scheme 'none' and locale 'pt-PT'
+[382] Biber.pm:3505> INFO - No sort tailoring available for locale 'pt-PT'
+[386] bbl.pm:608> INFO - Writing 'auxiliary\resumo-pt.bbl' with encoding 'UTF-8'
+[388] bbl.pm:712> INFO - Output to auxiliary\resumo-pt.bbl
+[393] Biber.pm:109> INFO - WARNINGS: 4

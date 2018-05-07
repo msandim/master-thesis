@@ -1,0 +1,51 @@
+\chapter{Conclusions and Future Work} \label{chap:conc}
+
+\section*{}
+
+This chapter presents the main conclusions of this research work in the context of Anomaly Detection and Ensemble Learning and possible future work topics.
+
+\section{Main Overview and Conclusions}
+
+On this dissertation, we first discussed the concepts of Anomaly Detection and Ensemble Learning. A taxonomy and applications for both of the fields was also presented, among with a definition of the Stacked Generalization method and its applications in the Anomaly Detection context.
+
+We then proposed an experimental methodology, separated in two experimental studies, to tackle the application the Stacked Generalization method in the context of Anomaly Detection.
+Several Anomaly Detection techniques from different taxonomic groups were studied separately and combined with different meta-classifiers.
+These studies were supported by datasets used throughout the literature of Anomaly Detection.
+The main results and findings of this experimental methodology were also exposed.
+
+We can briefly summarize the main conclusions of this dissertation as follows:
+
+\begin{itemize}
+	
+	\item Most of the Anomaly Detection techniques used in this study are \textit{accurate} and \textit{diverse} in the datasets used, therefore having the necessary conditions for the Stacking method over-performing the best technique in each dataset.
+	\item The application of the Stacking method guaranteed higher F1 values than the best Anomaly Detection technique on more than half of the datasets used.
+	\item There is no clear indication whether including Anomaly Detection techniques from different learning modes guarantees higher F1 values. In the datasets where this was true, the best combination was including techniques from all the learning modes available.
+	\item There is not a meta-classifier that clearly outperformed the others in terms of F1 on the datasets, so choosing the appropriate one seems to be very dependent on the dataset.
+	\item Replacing the meta-classifier with the Majority Voting method improved the F1 value on even more datasets, with also a higher mean improvement on the F1. In this case, ensembles with tree-based Anomaly Detection techniques only (CART and Random Forest) were the ones with higher F1 values on most datasets.
+	%\item The best approach in combining Anomaly Detection with best performance on the tested datasets is by combining the \textit{opinions} of two tree-based supervised algorithms (CART and Random Forest) with a Majority Voting meta-classifier;
+	%\item In most of the datasets, there was no advantage in terms of performance in including in an ensemble supervised and unsupervised learning Anomaly Detection techniques, as ensembles of supervised learning techniques reveled to be the most promising.
+\end{itemize}
+
+\section{Main Contributions}
+
+The main contribution of this dissertation is the the development of a research study on Stacking approaches applied to Anomaly Detection with a broader variety of techniques, meta-classifiers and datasets.
+Also a study on the performance and diversity of these techniques across datasets used throughout the Anomaly Detection literature was also provided as a secondary contribution.
+
+%The main contributions of this dissertation can be summarized as follows:
+
+%\begin{itemize}
+%	\item Development of a research study on Stacking approaches applied to Anomaly Detection with a broader variety of techniques meta-classifiers;
+%	\item 
+%\end{itemize}
+
+\section{Future Work}
+
+Several ideas can be followed as future work to the research work developed in this dissertation:
+
+\begin{itemize}
+	\item \textit{Bigger datasets}: One of the limitations of the experimental methodology proposed was the size of the datasets used. Although from our point of view it is important to perform a study on datasets that were used previously in the literature in order to enable further comparisons, these datasets are in general very small.
+	More complex methodologies with processes like parameter optimization would need bigger datasets in order to perform validation in a greater number of data instances.
+	\item \textit{Higher variety of Anomaly Detection techniques}: Although this dissertation performed an empirical evaluation on Stacking with a greater variety of Anomaly Detection techniques than previous studies (at least, to the best of our knowledge), more techniques could be incorporated and tested.
+	In particular, there were taxonomic groups of Anomaly Detection techniques that were not explored, mostly because the application of these techniques is not as popular, and therefore there is a lack of implementations in general purpose languages.
+	Therefore, the exploration of this future work idea most probably implicate some implementation work.
+\end{itemize}

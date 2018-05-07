@@ -1,0 +1,493 @@
+\chapter{Experimental Methodology} \label{chap:meth}
+
+\section*{}
+
+In order to study the application of Stacking to the problem of Anomaly Detection, first several techniques were evaluated concerning their predictive performance as well as the diversity among themselves, since these are the two concepts that need to be present in order to obtain better performances using Ensemble Learning methods (as described in section~\ref{sec:ensemble_def}).
+Afterwards, a study using the same techniques was conducted using Stacking approaches and their performance was analyzed.
+
+This chapter will describe the experimental methodology followed throughout this thesis, more specifically:
+
+\begin{itemize}
+	\item The first experimental study, focused on the performance and diversity of several Anomaly Detection techniques.
+	\item The second experimental study on the performance of Stacking approaches using some of the Anomaly Detection techniques used on the first study.
+\end{itemize}
+
+\section{Objectives}
+
+The original idea of this experimental research was to measure the performance and diversity of each of the techniques available and, based on these results, select the best techniques to group in an ensemble and evaluate its performance.
+
+Given a dataset $\mathcal{D}$ divided in three mutually exclusive partitions of approximate size $\mathcal{D}_1$, $\mathcal{D}_2$, $\mathcal{D}_3$, we could separate this experimental research into three phases (as illustrated in figure~\ref{fig:ensemble_process}):
+
+\begin{enumerate}
+	\item \textit{Ensemble Generation}: Select a diverse group of Anomaly Detection techniques to obtain models from.
+	
+	\item \textit{Ensemble Pruning}: Evaluate these potential models on the partition $\mathcal{D}_1$ using a cross-validation methodology (successively train a model on a set of partitions and test on a different partition) and select the top models with better performance to integrate in a ensemble $\mathcal{M}$.
+	
+	\item \textit{Ensemble Integration}: Select several possible Stacking approaches (i.e. usings a few models from $\mathcal{M}$, different meta-classifiers, \dots) and evaluate each of these approaches on the partition $\mathcal{D}_2$ using a cross-validation methodology.
+	After this evaluation is performed, the best Anomaly Detection algorithm on $\mathcal{D}_1$ and the best Stacking approach on $\mathcal{D}_2$ would then be evaluated on partition $\mathcal{D}_3$ in order to conclude if the use of Stacking could lead to a better performance.
+\end{enumerate}
+
+However, given the fact that the datasets used for evaluation of this thesis do not have a large number of instances (see section~\ref{sec:datasets}), this division would reduce the number of instances for each of the partitions $\mathcal{D}_1$, $\mathcal{D}_2$, $\mathcal{D}_3$.
+
+Thus, the main premises of this work is that among the models we have available there are some that are accurate and some that are diverse.
+This is however a relaxation from the conditions described in section~\ref{sec:ensemble_def}.
+Therefore, the methodology followed was:
+
+\begin{enumerate}
+	\item \textit{Experimental study on Anomaly Detection techniques}: Choose a set of Anomaly Detection techniques and examine their performance and diversity using the entire dataset $\mathcal{D}$.
+	The goal of this study would be to evaluate if we are in the presence of at least some accurate and/or diverse models.
+	
+	\item \textit{Experimental study on Stacking approaches}: Choose a set of Stacking approaches (using different level-0 models and different level-1 models) and evaluate their performance on $\mathcal{D}$. Finally, conclude if the Stacking approaches perform better than the individual model performances.
+\end{enumerate}
+
+\section{Study on Anomaly Detection Techniques}
+
+This first study conducted during this experimental research had the following objectives:
+
+\begin{itemize}
+	\item Study the performance and diversity of different types of Anomaly Detection techniques on several well-known datasets;
+	
+	\item Assess if this experimental setup contains accurate and diverse models.
+\end{itemize}
+
+\subsection{Anomaly Detection Techniques}\label{sec:study_techniques}
+
+Techniques from several of the groups presented in chapter~\ref{chap:anomaly} were used in this study, more specifically Classification based techniques, Nearest Neighbor based and Clustering based. These algorithms are listed in table~\ref{tab:nanomaly} and will be specified in this section according to their learning mode (i.e. supervised, semi-supervised and unsupervised).
+Statistical, Information Theoretic, and Spectral based techniques were not used in this study due the lack of implementations of techniques in these groups for multivariate data.
+A technique that predicts randomly if a data instance is \textit{anomalous} or not was used in order to define the baseline of performance in each dataset. 
+
+\begin{table}[!ht]
+	\centering
+	\caption{Anomaly Detection techniques used in this study for each nomenclature group and learning mode.}
+	\label{tab:nanomaly}
+	\begin{tabular}{@{}lp{3cm}p{3cm}p{2.5cm}@{}}
+		\toprule
+		& \textbf{Supervised} & \textbf{Semi-Sup.} & \textbf{Unsupervised} \\ \midrule
+		Classification & CART, SVM, NB, RF, MLP & One-class SVM & - \\
+		Nearest Neighbors & - & - & LOF \\
+		Clustering & - & - & DBSCAN, \newline k-means \\
+		Statistical & - & - & - \\
+		Information Theoretic & - & - & - \\
+		Spectral & - & - & - \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+It is also important to point out that these techniques can have different types of outputs:
+
+\begin{itemize}
+	\item \textit{Binary}: A binary value indicating if a data instance is \textit{anomalous} or not.
+	\item \textit{Probabilistic}: A numeric value that is always contained in the interval $[0,1]$ and can be interpreted as the probability of a data instance being \textit{anomalous}.
+	\item \textit{Other Numerical}: A numerical value that is not in the interval $[0,1]$ and does not represent a probability.
+\end{itemize}
+
+The classification of the techniques according to its output is presented in table~\ref{tab:anoutput}.
+
+\begin{table}[!ht]
+	\centering
+	\caption{Anomaly Detection techniques used in this study regarding the type of output.}
+	\label{tab:anoutput}
+	\begin{tabular}{@{}l|l|l@{}}
+		\toprule
+		\textbf{Binary} & \textbf{Probabilistic} & \textbf{Other Numerical} \\ \midrule
+		One-class SVM & CART, SVM, NB, RF, MLP & k-means, DBSCAN, LOF \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+%\textbf{Três tipos de outputs dos algoritmos:}
+%- Binário
+%- Probabilístico
+%- Score de ranking
+
+%Livro do aggarwal: If the threshold is selected too restrictively to minimize the number of declared outliers, then the algorithm will miss true outlier points (false negatives). On the other hand, if the algorithm declares too many data points as outliers, then it will lead to too many false positives. This trade-off can be measured in terms of precision and recall, which are commonly used for measuring the effectiveness of set-based retrieval.
+
+%Reasons to not use tuning:
+%- Some algorithms parametrizations can be able to find other outliers than some others can't find. Therefore we're interested in training a lot of models
+
+All the techniques's parameters were kept to the implementation's default, except for the ones in which there were no defaults.
+In this case, several possible values were tried for such parameters.
+This was the case of the techniques SVM, One-class SVM, DBSCAN, k-means and LOF.
+These possible values were kept as different instantions of the technique for the following reasons:
+
+\begin{itemize}
+	\item More data would be needed in order to validate which would be the best value for each parameter of each technique;
+	\item Some instantiations with different parameter values may be able to find \textit{anomalous} instances other instantiations did not.
+\end{itemize}
+
+For all the algorithms an \verb|R| implementation available was used.
+
+\subsubsection{Supervised}
+
+Five different supervised learning techniques were used in this study, more specifically:
+
+\begin{itemize}
+	\item \textit{Classification and Regression Trees (CART)}: a classification algorithm based on the tree building algorithm proposed by \textcite{breiman1984classification};
+	
+	\item \textit{Support Vector Machine (SVM)}: a classification algorithm that uses kernel functions \cite{708428};
+	
+	\item \textit{Naive Bayes (NB)}: A probabilistic classification algorithm that is based on the Bayes' theorem and assumes independence between the features \cite{mccallum1998comparison};
+	
+	\item \textit{Random Forest (RF)}: An ensemble learning method that trains multiple decision trees with samples of the dataset and a subgroups of the features \cite{liaw2002classification}.
+	
+	\item \textit{Multilayer Perceptron (MLP)}: A feedforward artificial neural network algorithm that can have one or multiple hidden layers \cite{rumelhart1988learning}.
+\end{itemize}
+
+The \verb|R| package and parameters used for each technique are detailed in table~\ref{tab:sup_param}.
+Regarding the Random Forest technique, the default number of trees was 500 but this parameter configuration led to a very long training time in order to obtain the model.
+\textcite{rumelhart1988learning} researched about the tuning of this parameter in 29 datasets in the context of medical data when optimizing the ROC AUC metric.
+The authors concluded that ``from 128 trees there is no more significant difference between the forests using 256, 512, 1024, 2048 and 4096 trees''.
+Also, ``the mean and the median AUC values do not present major changes from 64 trees''.
+Therefore, we do not believe the reduction on the number of trees in the Random Forest technique will have any significant changes in the technique's performance.
+
+\begin{table}[!ht]
+	\centering
+	\caption{Parameter values for supervised Anomaly Detection techniques.}
+	\label{tab:sup_param}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Technique} & \textbf{Parameters} & \textbf{R package} \\ \midrule
+		CART & cp = 0.01 & \verb|rpart| \\
+		SVM & \begin{tabular}[t]{@{}l@{}}C = 1\\ gamma = $\frac{1}{number\ of\ features}$\\ kernel = \{linear, polynomial (degree 3), radial, sigmoid\}\end{tabular} & \verb|e1071| \\
+		NB & - & \verb|e1071| \\
+		RF & ntree = 200 & \verb|randomForest| \\
+		MLP & size = 5 & \verb|RSNNS| \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+The application of these techniques was automated using the \verb|R| package \verb|caret|.
+
+\subsubsection{Semi-Supervised}
+
+One semi-supervised learning technique was used in this study:
+
+\begin{itemize}
+	\item \textit{One-Class SVM}: Similar to the SVM technique, although this one is only trained with \textit{normal} instances \cite{Kandhari2009}.  
+\end{itemize}
+
+The \verb|R| package and parameters used for this technique are detailed in table~\ref{tab:semi_sup_param}.
+
+\begin{table}[!ht]
+	\centering
+	\caption{Parameter values for semi-supervised Anomaly Detection techniques.}
+	\label{tab:semi_sup_param}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Technique} & \textbf{Parameters} & \textbf{R package} \\ \midrule
+		One-class SVM & \begin{tabular}[t]{@{}l@{}}C = 1\\ gamma = $\frac{1}{number\ of\ features}$\\ kernel = \{linear, polynomial (degree 3), radial, sigmoid\}\end{tabular} & \verb|e1071| \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\subsubsection{Unsupervised}
+
+Three different unsupervised learning algorithms were used in this study, more specifically:
+
+\begin{itemize}
+	\item \textit{k-means}: An approach based on the clustering algorithm k-means \cite{rumelhart1988learning}, in which the euclidean distance of each data instance to its closest cluster is used as an anomaly score.
+	
+	\item \textit{DBSCAN}: A density-based clustering technique that has the particularity of not forcing an assignment of every data instance to a cluster \cite{Ester:1996:DAD:3001460.3001507}.
+	Thus, instances that are assigned to a cluster may be regarded as \emph{normal}, while the remaining ones as \textit{anomalous}.
+	
+	\item \textit{LOF}: An algorithm that detects anomalies by comparing the density of the data instances to the density of their $k$ neighbors, where $k$ is a parameter of the algorithm \cite{Breunig}.
+	 This algorithm outputs an anomaly score for each data instance: higher scores correspond to more \textit{anomalous} data instances.
+\end{itemize}
+
+\begin{table}[!ht]
+	\centering
+	\caption{Parameter values for unsupervised Anomaly Detection techniques.}
+	\label{tab:unsup_param}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Technique} & \textbf{Parameters} & \textbf{R package} \\ \midrule
+		k-means & k =  \{3, 5, 8, 14, 19, 25, 30\} & \verb|stats| \\
+		DBSCAN & \begin{tabular}[t]{@{}l@{}}eps = \{0.3, 0.5, 0.7, 0.9, 1.1\}\\ minPts = $number\ of\ features\ +\ 1$\end{tabular} & \verb|dbscan| \\
+		LOF & k =  \{3, 5, 8, 14, 19, 25, 30\} & \verb|dbscan| \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Evaluation Datasets}\label{sec:datasets}
+
+The datasets were gathered from an empirical study developed by \textcite{Campos2016}, in which datasets suited for Anomaly Detection benchmarking were collected and pre-processed.
+
+\textcite{Campos2016} discriminates two types of datasets used throughout the literature to benchmark Anomaly Detection techniques:
+
+\begin{itemize}
+	\item Datasets that contain semantic information that suggests that some of the classes are sufficiently different from the remaining ones in order to be considered \textit{anomalous} within the dataset;
+	
+	\item Datasets in which the \textit{anomalous} instances are obtained by selecting a small portion of instances from a small number of classes.
+\end{itemize}
+
+The datasets are described below, including a brief description of their context as well as the mechanism that differentiates \textit{anomalous} instances from \textit{normal} ones.
+In some cases this information can not be retrieved from the literature, as each author uses different pre-processing mechanisms or different versions of a dataset and sometimes no references describing the dataset can be found.
+
+\begin{itemize}
+	\item \textit{ALOI}: The dataset consists in a color image collection of one-thousand small objects, recorded for scientific purposes. Several viewing angles, illumination angles and illumination colors were used for each object. Information about how \textit{anomalous} instances were categorized was not found \cite{Campos2016};
+	
+	\item \textit{Ionosphere}: Dataset with radar data from the ionosphere. The \textit{anomalous} instances are radar returns that show evidence of some type of structure in the ionosphere \cite{sigillito1989classification, Campos2016};
+	
+	\item \textit{KDDCup99}: Dataset regarding Intrusion Detection events. The \textit{anomalous} instances are the ones marked as \textit{U2R} attacks \cite{Campos2016};
+	
+	\item \textit{PenDigits}: Dataset with pen-base handwritten digits. The \textit{anomalous} instances are the ones classified as being the digit \textit{4} \cite{Alimoglu96methodsof};
+	
+	\item \textit{Shuttle}: No further information regarding the context of this dataset was found. The \textit{anomalous} instances are the ones with the class value \textit{2} \cite{Campos2016};
+	
+	\item \textit{Waveform}: No further information regarding the context of this dataset was found. The \textit{anomalous} instances are the ones with the class value \textit{0} \cite{Campos2016};
+	
+	\item \textit{WBC}: Dataset composed of features extracted from digitized images of masses, in the context of breast cancer. The \textit{anomalous} instances are the ones marked as \textit{malignant} \cite{Campos2016};
+	
+	\item \textit{WDBC}: Dataset with similar description to \textit{WBC};
+	
+	\item \textit{WPBC}: Dataset with similar description to \textit{WBC};
+	
+	\item \textit{Annthyroid}: Dataset in the context of the Thyroid disease. The \textit{anomalous} instances are the ones marked as \textit{Hypothyroidism} \cite{Campos2016};
+	
+	\item \textit{Arrhythmia}: Dataset in the context of Arrhythmia with information regarding each patient. The \textit{anomalous} instances are the ones marked as suffering from \textit{Arrhythmia} \cite{Campos2016};
+	
+	\item \textit{Cardiotocography}: Dataset with features extracted from fetal cardiotocograms. The \textit{anomalous} instances are the ones marked as the fetal state being \textit{suspect} or \textit{pathologic} \cite{Campos2016};
+	
+	\item \textit{HeartDisease}: Dataset in the context of heart disease with information regarding each patient. The \textit{anomalous} instances are the ones marked having heart problems \cite{Campos2016};
+	
+	\item \textit{Hepatitis}: Dataset in the context of \textit{Hepatitis} with information regarding each patient. The \textit{anomalous} instances are the ones that survived \cite{Campos2016};
+	
+	\item \textit{InternetAds}: Dataset representing a set of possible advertisements on Internet pages. The features include geometry of the ad's image, phrases occurring in the URL, the image's URL, the anchor's text, and words occuring near the anchor's text \cite{Alimoglu96methodsof}. The \textit{anomalous} instances are the ones marked as being an ad \cite{Campos2016};
+	
+	\item \textit{PageBlocks}: Dataset representing features extracted from page layout blocks of a document \cite{Malerba1996}. The \textit{anomalous} instances are the ones marked as not containing text \cite{Campos2016};
+	
+	\item \textit{Parkinson}: Dataset with features extracted from biomedical voice measurements made by patients. The \textit{anomalous} instances are the ones marked as healthy \cite{Campos2016};
+	
+	\item \textit{Pima}: Dataset in the context of \textit{Diabetes} with information regarding each patient. The \textit{anomalous} instances are the ones that have \textit{Diabetes} \cite{Campos2016};
+	
+	\item \textit{SpamBase}: Dataset with an e-mail corpus. The \textit{anomalous} instances are the ones marked as not SPAM \cite{Campos2016};
+	
+	\item \textit{Stamps}: Dataset with color and printing properties of stamps. The \textit{anomalous} instances are the forged stamps \cite{Campos2016};
+	
+	\item \textit{Wilt}: Dataset with image segments of land cover. The \textit{anomalous} instances are image segments of deceased trees \cite{Campos2016}. 
+\end{itemize}
+
+A characterization of the datasets used is presented in table~\ref{tab:datasets}.
+
+{\renewcommand{\arraystretch}{1} \setlength{\tabcolsep}{0.5em}
+	\begin{table}[!ht]
+		\centering
+		\caption{Number and ratio of \textit{anomalous} and \textit{normal} data instances in the datasets used throughout the experimental evaluation. The datasets are ordered in decreasing order by the number of outliers.}
+		\label{tab:datasets}
+		\begin{tabular}{@{}lrrrrr@{}}
+			\toprule
+			\textbf{Dataset} & \multicolumn{1}{l}{\textbf{\# Features}} & \multicolumn{1}{l}{\textbf{\# Outliers}} & \multicolumn{1}{l}{\textbf{Outlier ratio}} & \multicolumn{1}{l}{\textbf{\# Inliers}} & \multicolumn{1}{l}{\textbf{Inlier ratio}} \\ \midrule
+			ALOI & 27 & 1508 & 3.04\% & 48026 & 96.96\% \\
+			SpamBase & 57 & 632 & 20.00\% & 2528 & 80.00\% \\
+			Annthyroid & 21 & 534 & 7.49\% & 6595 & 92.51\% \\
+			PageBlocks & 10 & 510 & 9.46\% & 4883 & 90.54\% \\
+			Cardiotocography & 21 & 412 & 20.00\% & 1648 & 80.00\% \\
+			InternetAds & 1555 & 368 & 18.72\% & 1598 & 81.28\% \\
+			Wilt & 5 & 257 & 5.33\% & 4562 & 94.67\% \\
+			KDDCup99 & 40 & 200 & 0.42\% & 47913 & 99.58\% \\
+			Ionosphere & 32 & 126 & 35.90\% & 225 & 64.10\% \\
+			Pima & 8 & 125 & 20.00\% & 500 & 80.00\% \\
+			Waveform & 21 & 100 & 2.90\% & 3343 & 97.10\% \\
+			WPBC & 33 & 47 & 23.74\% & 151 & 76.26\% \\
+			HeartDisease & 13 & 37 & 19.79\% & 150 & 80.21\% \\
+			Stamps & 9 & 31 & 9.12\% & 309 & 90.88\% \\
+			Arrhythmia & 259 & 27 & 9.96\% & 244 & 90.04\% \\
+			PenDigits & 16 & 20 & 0.20\% & 9848 & 99.80\% \\
+			Shuttle & 9 & 13 & 1.28\% & 1000 & 98.72\% \\
+			Hepatitis & 19 & 13 & 16.25\% & 67 & 83.75\% \\
+			Parkinson & 22 & 12 & 20.00\% & 48 & 80.00\% \\
+			WBC & 9 & 10 & 4.48\% & 213 & 95.52\% \\
+			WDBC & 30 & 10 & 2.72\% & 357 & 97.28\% \\ \bottomrule
+		\end{tabular}
+\end{table}}
+
+\subsubsection{Data Preprocessing}
+
+All the duplicate instances (instances with the same exact values for every feature) were removed, as its existence might be problematic for some of the algorithms (e.g. LOF) \cite{Campos2016}.
+
+Categorical features are also not universally accepted by learning algorithms.
+\textcite{Campos2016} transformed the categorical features into numeric features with the following rule: a value $v$ (e.g. \textit{tall}) of a categorical feature $cf$ (e.g. \textit{height}) was replaced by:
+
+\begin{equation}
+IDF(v,cf) = ln \left( \frac{N}{freq_{v,cf}} \right)
+\end{equation}
+
+where $N$ is the total number of instances in the dataset and $freq_{v,cf}$ is the number of occurrences of the value $v$ within the categorical feature $cf$ (e.g. number of \textit{tall} people).
+
+%The feature values were standardized using the z-score method.
+
+Numeric features were standardized using the formula in \ref{eq:standardization} (except in this case we are standardizing feature values and not scores outputted from a model).
+
+\subsection{Evaluation Methodology}
+
+\subsubsection{Performance}\label{sec:studytechniqueperformance}
+
+In order to evaluate the performance of the techniques the F-measure \cite{powers2011evaluation} was used.
+This metric was used instead of the ROC AUC \cite{powers2011evaluation}, since ROC AUC is usually used with numerical outputs and we have a technique with a binary output.
+
+In order to use this metric, all the outputs were transformed into binary ones.
+In order to do this, for each technique the instances with a higher score value were marked as \textit{anomalous} and the remaining ones as \textit{normal}.
+The threshold for this decision was the ratio of \textit{anomalous} instances in each dataset (e.g. if the dataset has 5\% of its instances as \textit{anomalous}, then the top 5\% instances with higher score in each algorithm were predicted as \textit{anomalous}).
+
+The F-measure is defined as follows:
+
+\begin{equation}\label{eq:fmeasure}
+F_\beta = (1 + \beta^2) \cdot \frac{precision \cdot recall}{(\beta^2 \cdot precision) + recall}
+\end{equation}
+
+When $\beta = 1$, this metric is the same as the harmonic mean between \textit{precision} and \textit{recall}.
+When $\beta = 2$ or $\beta = 0.5$ this metric puts a higher weight on \textit{recall} or \textit{precision} respectively.
+
+\begin{table}[!ht]
+	\centering
+	\caption{Confusion matrix in the context of Anomaly Detection.}
+	\label{tab:confusionmatrix}
+	{\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{cc|c|c|c}
+			\cline{3-4}
+			&  & \multicolumn{2}{c|}{\textbf{True}} &  \\ \cline{3-4}
+			&  & Anomalous (Positive) & Normal (Negative) &  \\ \cline{1-4}
+			\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Predicted}}} & Anomalous (Positive) & \textit{True positive} (TP) & \textit{False positive} (FP) &  \\ \cline{2-4}
+			\multicolumn{1}{|c|}{} & Normal (Negative) & \textit{False negative} (FN) & \textit{True negative} (TN) &  \\ \cline{1-4}
+	\end{tabular} }
+\end{table}
+
+Considering the definitions in table \ref{tab:confusionmatrix}, where the positive label is \textit{anomalous} and the negative one is \textit{normal}, \textit{precision} and \textit{recall} can be defined as follows:
+
+\begin{equation}\label{eq:precision}
+precision = \frac{TP}{TP + FP}
+\end{equation}
+
+\begin{equation}\label{eq:recall}
+recall = \frac{TP}{TP + FN}
+\end{equation}
+
+In the context of Anomaly Detection, \textit{precision} can provide an insight on how many of the instances we are classifying as \textit{anomalous} are truly \textit{anomalous}, while \textit{recall} on how many of all the \textit{anomalous} instances we are classifying correctly.
+
+The performance evaluation for the supervised and semi-supervised techniques was conducted using 10-fold stratified cross-validation.
+In this methodology, the dataset is divided into ten folds with equal representation of each class, where nine are used to train the model and one is used to test/evaluate the trained model.
+All the possible combinations of training/testing folds are used and the evaluation metric is calculated as the mean of the ones calculated for each test fold.
+
+In the case of the unsupervised techniques there is not a training process so the technique as applied directly to the entire dataset and the evaluation was conducted on the entire dataset at once.
+
+It is worth mentioning that sometimes the F1 metric could not be calculated: for example, when the model classifies all instances as being \textit{normal}.
+In this case, the \textit{precision} metric can not be calculated, which makes the calculation of the F1 metric impossible.
+In these circumstances a value of 0 was assigned to the F1 metric.
+This assumption penalizes this behavior heavily, which is desirable since a model that predicts all instances as \textit{normal} is as accurate as a random guess or less.
+
+\subsubsection{Diversity}
+
+In order to evaluate the diversity of the outputs of the different techniques, the Jaccard metric \cite{similaritymeasures} was used.
+The Jaccard metric is a similarity metric that is able to compare two binary vectors (in this case the outputs from two different techniques).
+The outputs of each technique were transformed into binary ones by using the method described in the previous section for the application of the F-measure.
+
+\begin{table}[!ht]
+	\centering
+	\caption{Representation of the similarity cases between two Anomaly Detection techniques A and B, where each letter $a,b,c,d$ represents the number of occurrences for each case.}
+	\label{tab:jsimilarity}
+	{\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{cc|c|c|c}
+			\cline{3-4}
+			&  & \multicolumn{2}{c|}{\textbf{B}} &  \\ \cline{3-4}
+			&  & Anomalous & Normal &  \\ \cline{1-4}
+			\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{A}}} & Anomalous & $a$ & $b$ &  \\ \cline{2-4}
+			\multicolumn{1}{|c|}{} & Normal & $c$ & $d$ &  \\ \cline{1-4}
+	\end{tabular} }
+\end{table}
+
+Considering the definitions in table \ref{tab:jsimilarity}, the Jaccard metric is defined as follows:
+
+\begin{equation}
+S_{Jaccard} = \frac{a}{a + b + c}
+\end{equation}
+
+In the case of diversity evaluation, it would not make sense to use a cross-validation methodology.
+In this case the diversity metric was used on the output of each technique used to produce the level-1 dataset (as previously explained in section~\ref{sec:stacking}).
+
+%\begin{enumerate}
+%	\item \textit{Ensemble Generation}: Build an ensemble $M$ with models obtained from different Anomaly Detection techniques.
+%	Generate these models and measure their performance and diversity measured on a partition $D^1$ using cross-validation
+%	Guarantee that there are accurate and diverse techniques.
+%	
+%	\item \textit{Ensemble Pruning}: In this case we only selected variables that had a variance > 0.
+	
+	%\item textit{Ensemble Integration}: Evaluate several Stacking approaches with the ensemble $M$. 
+%\end{enumerate}
+
+%What algorithms were used?
+
+%Do we have diversity in the ensemble?
+
+%Do we have accurate models in the ensemble?
+
+\section{Study on Stacking Approaches}
+
+This second study conducted during this experimental research had the following objectives:
+
+\begin{itemize}
+	\item Determine if combining several Anomaly Detection techniques with a model improves the performance of each of the Anomaly Detection techniques used in this study;
+	
+	\item If so, determine how much the performance is improved.
+\end{itemize}
+
+\subsection{Stacking Approaches}
+
+The different Stacking approaches that were analyzed differ in two aspects: the Anomaly Detection techniques that were included in the ensemble and meta-classifiers used to combine the techniques in the ensemble.
+
+\subsubsection{Techniques Combined (Level-0)}\label{sec:techniques_combinated}
+
+All the techniques used in the first study were included in this study (with the values for each parameter).
+Additionally, the inclusion of several subgroups of techniques in the ensemble was also tried, namely:
+
+\begin{itemize}
+	\item All of the techniques;
+	\item Only supervised learning techniques (CART, SVM, NB, RF, MLP);
+	\item Only semi-supervised learning techniques (One-class SVM);
+	\item Only unsupervised learning techniques (k-means, DBSCAN, LOF);
+	\item Only semi-supervised and unsupervised learning techniques;
+	\item Only tree-based techniques (CART, RF);
+	\item Only SVM-based techniques (SVM, One-class SVM);
+	\item Only the SVM technique;
+	\item Only clustering-based techniques (k-means, DBSCAN);
+	\item Only the k-means technique;
+	\item Only the DBSCAN technique;
+	\item Only the LOF technique.
+\end{itemize}
+
+It is worth mentioning some of the techniques originated multiple models since different values were tried for some parameters.
+As seen previously, this is the case of the techniques SVM, One-class SVM, k-means, DBSCAN and LOF.
+
+For each of the datasets used, the techniques with zero variance (same output for each of the instances in the dataset) were not included in the ensemble.
+This was done with the function \verb|nearZeroVar| from the \verb|caret| package, with the parameters freqCut~=~0 and uniqueCut~=~0.
+
+Each of the techniques' outputs for each dataset were also standardized using the formula in equation~\ref{eq:standardization}.
+
+\subsubsection{Meta-classifiers (Level-1)}
+
+Several possible meta-classifiers were tried, which includes the following techniques also used at level-0: CART, MLP and RF.
+Additionally, the Logistic Regression (LR) technique was also used since this technique has been previously used in Stacking approaches \cite{Sesmero2015}. The \verb|R| packages and parameters used for each technique are detailed in table~\ref{tab:meta_param}.
+
+\begin{table}[!ht]
+	\centering
+	\caption{Parameter values for the meta-classifiers.}
+	\label{tab:meta_param}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Technique} & \textbf{Parameters} & \textbf{R package} \\ \midrule
+		LR & maxit = 100 & \verb|stats| \\
+		CART & cp = 0.01 & \verb|rpart| \\
+		RF & ntree = 200 & \verb|randomForest| \\
+		MLP & size = 5 & \verb|RSNNS| \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+A Majority Voting meta-classifier was also used, to work as a baseline for the other approaches (see equation~\ref{eq:majority}).
+In this case, all the outputs from the level-0 techniques were transformed into binary ones so they can be combined.
+This transformation is the same as the one described in section~\ref{sec:studytechniqueperformance} for the application of the F-measure.
+
+The application of these meta-classifiers was automatized using the R package \verb|caret|.
+
+\subsection{Evaluation Methodology}
+
+The evaluation methodology was the same as the one used for the performance evaluation of the Anomaly Detection techniques (see section~\ref{sec:studytechniqueperformance}).
+
+\subsection{Evaluation Data}
+
+The evaluation data used for this study was the one described in section~\ref{sec:datasets}.
+It is worth mentioning that for the the datasets Waveform, WDBC, WPBC, Cardiotocography, HeartDisease, Hepatitis, InternetAds and Parkinson the RF technique was not used as a meta-classifier due to very long training times.

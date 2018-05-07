@@ -1,0 +1,48 @@
+\BOOKMARK [0][-]{init.0}{Front Page}{}% 1
+\BOOKMARK [0][-]{contents.0}{Table of Contents}{}% 2
+\BOOKMARK [0][-]{figures.0}{List of Figures}{}% 3
+\BOOKMARK [0][-]{tables.0}{List of Tables}{}% 4
+\BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 5
+\BOOKMARK [1][-]{section.1.1}{1.1 Motivation and Goals}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.2}{1.2 Outline}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{2 Anomaly Detection}{}% 8
+\BOOKMARK [1][-]{section.2.1}{2.1 Definition}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{2.2 Type of Anomalies}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{2.3 Learning Mode}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.4}{2.4 Type of Techniques}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.4.1}{2.4.1 Classification Based Techniques}{section.2.4}% 13
+\BOOKMARK [2][-]{subsection.2.4.2}{2.4.2 Nearest Neighbor Based Techniques}{section.2.4}% 14
+\BOOKMARK [2][-]{subsection.2.4.3}{2.4.3 Clustering Based Techniques}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.4}{2.4.4 Statistical Techniques}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.5}{2.4.5 Information Theoretic Techniques}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.6}{2.4.6 Spectral Techniques}{section.2.4}% 18
+\BOOKMARK [0][-]{chapter.3}{3 Ensemble Learning and Stacked Generalization}{}% 19
+\BOOKMARK [1][-]{section.3.1}{3.1 Ensemble Learning Definition}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.2}{3.2 Ensemble Learning Process}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Ensemble Generation}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Ensemble Pruning}{section.3.2}% 23
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Ensemble Integration}{section.3.2}% 24
+\BOOKMARK [1][-]{section.3.3}{3.3 Ensemble Learning Applications to Anomaly Detection}{chapter.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.1}{3.3.1 Unsupervised Learning Approaches}{section.3.3}% 26
+\BOOKMARK [1][-]{section.3.4}{3.4 Stacked Generalization}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.4.1}{3.4.1 Applications to Anomaly Detection}{section.3.4}% 28
+\BOOKMARK [0][-]{chapter.4}{4 Experimental Methodology}{}% 29
+\BOOKMARK [1][-]{section.4.1}{4.1 Objectives}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.2}{4.2 Study on Anomaly Detection Techniques}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Anomaly Detection Techniques}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 Evaluation Datasets}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 Evaluation Methodology}{section.4.2}% 34
+\BOOKMARK [1][-]{section.4.3}{4.3 Study on Stacking Approaches}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 Stacking Approaches}{section.4.3}% 36
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 Evaluation Methodology}{section.4.3}% 37
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 Evaluation Data}{section.4.3}% 38
+\BOOKMARK [0][-]{chapter.5}{5 Discussion of Results}{}% 39
+\BOOKMARK [1][-]{section.5.1}{5.1 Study on Anomaly Detection Techniques}{chapter.5}% 40
+\BOOKMARK [2][-]{subsection.5.1.1}{5.1.1 Performance}{section.5.1}% 41
+\BOOKMARK [2][-]{subsection.5.1.2}{5.1.2 Diversity}{section.5.1}% 42
+\BOOKMARK [1][-]{section.5.2}{5.2 Study on Stacking Approaches}{chapter.5}% 43
+\BOOKMARK [0][-]{chapter.6}{6 Conclusions and Future Work}{}% 44
+\BOOKMARK [1][-]{section.6.1}{6.1 Main Overview and Conclusions}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.2}{6.2 Main Contributions}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.3}{6.3 Future Work}{chapter.6}% 47
+\BOOKMARK [0][-]{section*.52}{References}{}% 48
